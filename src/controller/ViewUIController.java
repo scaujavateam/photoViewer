@@ -87,7 +87,7 @@ public class ViewUIController implements Initializable {
 		imageView.setPreserveRatio(true);
 		imageView.setSmooth(true);
 		imageView.setImage(image);
-		toolbar.setVisible(true);
+		//toolbar.setVisible(true);
 		enlargeBtn.setTooltip(new Tooltip("放大"));
 		smallBtn.setTooltip(new Tooltip("缩小"));
 		resetBtn.setTooltip(new Tooltip("重置"));

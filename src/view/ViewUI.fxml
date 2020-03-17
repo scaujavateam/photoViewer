@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -7,84 +8,96 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="746.0" prefWidth="1038.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewUIController">
+<AnchorPane prefHeight="617.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewUIController">
    <children>
-      <StackPane alignment="BOTTOM_CENTER" prefHeight="784.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane alignment="BOTTOM_CENTER" layoutX="-5.0" prefHeight="619.0" prefWidth="1129.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane layoutY="-16.0" onMousePressed="#Press" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <center>
-                  <ImageView fx:id="imageView" disable="true" fitHeight="500.0" fitWidth="1000.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center>
+            <BorderPane layoutY="-16.0" onMousePressed="#Press" prefHeight="548.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <left>
-                  <Button fx:id="previousImageBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#previousAction" prefHeight="1100.0" prefWidth="100.0" text="&lt;" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+                  <Button fx:id="previousImageBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#previousAction" prefHeight="582.0" prefWidth="94.0" text="&lt;" textAlignment="CENTER" BorderPane.alignment="TOP_LEFT">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="40.0" />
                      </font>
                   </Button>
                </left>
                <right>
-                  <Button fx:id="nextImageBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextAction" prefHeight="1100.0" prefWidth="50.0" text="&gt;" textFill="WHITE" BorderPane.alignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="100.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
+                  <Button fx:id="nextImageBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextAction" prefHeight="578.0" prefWidth="94.0" text="&gt;" BorderPane.alignment="TOP_RIGHT">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
                </right>
-               <bottom>
-                  <ToolBar fx:id="toolbar" prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
-                     <padding>
-                        <Insets right="10.0" top="1.0" />
-                     </padding>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                  </ToolBar>
-               </bottom>
                <top>
-                  <Pane prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #0078d7;" BorderPane.alignment="CENTER">
+                  <Pane prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #0078d7;" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="backBtn" contentDisplay="CENTER" layoutY="15.0" mnemonicParsing="false" onAction="#Back" prefHeight="28.0" prefWidth="80.0" text="返回" textFill="WHITE">
+                        <Button fx:id="backBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="50.0" text="返回" textFill="WHITE">
                            <opaqueInsets>
                               <Insets top="1.0" />
                            </opaqueInsets>
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="/back.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <HBox alignment="CENTER_RIGHT" layoutX="450.0" layoutY="2.0" prefHeight="50.0" prefWidth="750.0" spacing="30.0" style="-fx-background-color: transparent;">
+                        <HBox alignment="CENTER_RIGHT" layoutX="373.0" layoutY="1.0" prefHeight="33.0" prefWidth="646.0" spacing="15.0" style="-fx-background-color: transparent;">
                            <children>
-                              <Button fx:id="pptBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#PPTAction" text="幻灯片">
+                              <Button fx:id="pptBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#PPTAction" prefHeight="24.0" prefWidth="62.0" text="幻灯片">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/ppt .png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                               <Button fx:id="beautyBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#beautyAction" text="美化">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/beauty.png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                               <Button fx:id="rotateBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rotateAction" text="旋转">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/rotate.png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                               <Button fx:id="DaozhiBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Daozhi" text="倒置">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/mirror.png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                             <Button fx:id="enlargeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#enlargeAction" text="放大">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/bigger.png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                               <Button fx:id="smallBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#smallAction" text="缩小">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/smaller.png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                               <Button fx:id="resetBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetAction" text="重置">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="/reset.png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                            </children>
@@ -94,7 +107,10 @@
                         </HBox>
                      </children>
                   </Pane>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="imageView" disable="true" fitHeight="569.0" fitWidth="922.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
          </children>
          <effect>
             <Blend />
