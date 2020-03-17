@@ -30,13 +30,14 @@ public class OpenAction {
 		} else {
 			try {
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("/View/ViewUI.fxml"));
+				loader.setLocation(getClass().getResource("/view/ViewUI.fxml"));
 				Parent root = (Parent) loader.load();
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add("view/iVCSS.css");
 				ChangeService.stage.setScene(scene);
-				ChangeService.stage.setTitle("iViewer_1.0");
+				ChangeService.stage.setTitle("照片");
 				// ChangeService.stage.setResizable(false);
+				ChangeService.stage.centerOnScreen();
 				ChangeService.stage.show();
 			} catch (Exception e) {
 				e.printStackTrace();
