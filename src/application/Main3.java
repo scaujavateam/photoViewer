@@ -28,7 +28,6 @@ public class Main3 extends Application {
 			ChangeService.stage.setTitle("照片");
 			ChangeService.stage.getIcons().add(new Image("/logo.png"));
 			ChangeService.stage.centerOnScreen();
-
 			ChangeService.stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
