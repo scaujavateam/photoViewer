@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -8,113 +9,110 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="617.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewUIController">
    <children>
-      <StackPane alignment="BOTTOM_CENTER" layoutX="-5.0" prefHeight="619.0" prefWidth="1129.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <BorderPane layoutY="-16.0" onMousePressed="#Press" prefHeight="548.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <left>
-                  <Button fx:id="previousImageBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#previousAction" prefHeight="582.0" prefWidth="94.0" text="&lt;" textAlignment="CENTER" BorderPane.alignment="TOP_LEFT">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
+      <BorderPane onMousePressed="#Press" prefHeight="633.0" prefWidth="1117.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <Button fx:id="previousImageBtn" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousAction" prefHeight="573.0" prefWidth="94.0" text="&lt;" textAlignment="CENTER" BorderPane.alignment="TOP_LEFT">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+         </left>
+         <right>
+            <Button fx:id="nextImageBtn" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextAction" prefHeight="580.0" prefWidth="94.0" text="&gt;" BorderPane.alignment="TOP_RIGHT">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+         </right>
+         <center>
+            <ImageView fx:id="imageView" fitHeight="504.0" fitWidth="839.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <HBox alignment="CENTER" layoutX="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="1116.0" spacing="15.0" style="-fx-background-color: #0078d7;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="backBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="50.0" text="返回" textFill="WHITE">
+                     <opaqueInsets>
+                        <Insets top="1.0" />
+                     </opaqueInsets>
+                     <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-               </left>
-               <right>
-                  <Button fx:id="nextImageBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextAction" prefHeight="578.0" prefWidth="94.0" text="&gt;" BorderPane.alignment="TOP_RIGHT">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
+                  <Button fx:id="pptBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#PPTAction" prefHeight="24.0" prefWidth="62.0" text="幻灯片">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/ppt .png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-               </right>
-               <top>
-                  <Pane prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #0078d7;" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="backBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="50.0" text="返回" textFill="WHITE">
-                           <opaqueInsets>
-                              <Insets top="1.0" />
-                           </opaqueInsets>
-                           <graphic>
-                              <ImageView fitHeight="38.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="/back.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <HBox alignment="CENTER_RIGHT" layoutX="373.0" layoutY="1.0" prefHeight="33.0" prefWidth="646.0" spacing="15.0" style="-fx-background-color: transparent;">
-                           <children>
-                              <Button fx:id="pptBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#PPTAction" prefHeight="24.0" prefWidth="62.0" text="幻灯片">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="/ppt .png" />
-                                       </image></ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="beautyBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#beautyAction" text="美化">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="/beauty.png" />
-                                       </image></ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="rotateBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rotateAction" text="旋转">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="/rotate.png" />
-                                       </image></ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="DaozhiBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Daozhi" text="倒置">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="/mirror.png" />
-                                       </image></ImageView>
-                                 </graphic>
-                              </Button>
-                            <Button fx:id="enlargeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#enlargeAction" text="放大">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="/bigger.png" />
-                                       </image></ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="smallBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#smallAction" text="缩小">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="/smaller.png" />
-                                       </image></ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="resetBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetAction" text="重置">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="/reset.png" />
-                                       </image></ImageView>
-                                 </graphic>
-                              </Button>
-                           </children>
-                           <padding>
-                              <Insets left="1.0" right="1.0" />
-                           </padding>
-                        </HBox>
-                     </children>
-                  </Pane>
-               </top>
-               <center>
-                  <ImageView fx:id="imageView" disable="true" fitHeight="569.0" fitWidth="922.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-         </children>
-         <effect>
-            <Blend />
-         </effect>
-      </StackPane>
+                  <Button fx:id="beautyBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#beautyAction" text="美化">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/beauty.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="rotateBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rotateAction" text="旋转">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/rotate2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DaozhiBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Daozhi" text="倒置">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/mirror2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                <Button fx:id="enlargeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#enlargeAction" text="放大">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/bigger.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="smallBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#smallAction" text="缩小">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/smaller.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="resetBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetAction" text="重置">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/reset.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="1.0" right="1.0" />
+               </padding>
+            </HBox>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

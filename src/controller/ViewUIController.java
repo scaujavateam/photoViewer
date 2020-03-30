@@ -80,9 +80,16 @@ public class ViewUIController implements Initializable {
 
 		ChangeService.origin = new ImageView(image);
 		ChangeService.change = new ImageView(image);
-		
-		ChangeService.originHight = imageView.getFitHeight();
+
+		ChangeService.originHeight = imageView.getFitHeight();
 		ChangeService.originWidth = imageView.getFitWidth();
+
+		if (ChangeService.files.indexOf(ChangeService.file)==0){
+			previousImageBtn.setVisible(false);
+		}
+		if (ChangeService.files.indexOf(ChangeService.file)==ChangeService.files.size()-1){
+			nextImageBtn.setVisible(false);
+		}
 
 		imageView.setPreserveRatio(true);
 		imageView.setSmooth(true);
@@ -94,7 +101,9 @@ public class ViewUIController implements Initializable {
 		rotateBtn.setTooltip(new Tooltip("旋转"));
 		beautyBtn.setTooltip(new Tooltip("美化"));
 		previousImageBtn.setTooltip(new Tooltip("上一张"));
+
 		nextImageBtn.setTooltip(new Tooltip("下一张"));
+
 	}
 
 	public ImageView getImageView() {
@@ -165,12 +174,12 @@ public class ViewUIController implements Initializable {
 	// Event Listener on Button[#previousImageBtn].onAction
 	@FXML
 	public void previousAction(ActionEvent event) {
-		Previous_next_Action.changePicture(imageView, false);
+		Previous_next_Action.changePicture(imageView, false,previousImageBtn,nextImageBtn,ChangeService.files.indexOf(ChangeService.file));
 	}
 
 	// Event Listener on Button[#nextImageBtn].onAction
 	@FXML
 	public void nextAction(ActionEvent event) {
-		Previous_next_Action.changePicture(imageView, true);
+		Previous_next_Action.changePicture(imageView, true,previousImageBtn,nextImageBtn,ChangeService.files.indexOf(ChangeService.file));
 	}
 }

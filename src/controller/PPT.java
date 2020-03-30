@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 import action.OpenAction;
+import com.sun.xml.internal.ws.runtime.config.TubelineFeatureReader;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -29,15 +31,17 @@ import service.ChangeService;
 
 public class PPT implements Initializable {
 	private Timeline timeline;
+
 //	private ArrayList<File> images;
 //	private ArrayList<Image> list;
 	private int count = 0;
 
 
+
 	@FXML
 	private ImageView imageview;
 	@FXML
-	private Button start, stop;
+	private Button start, stop,fast;
 
 	@FXML
 	private void Begin(ActionEvent e) {
@@ -48,15 +52,18 @@ public class PPT implements Initializable {
 	private void Stop(ActionEvent e) {
 		timeline.pause();
 	}
-
+	@FXML
+	private void fast(ActionEvent e){}
 	@FXML
 	private void Press(MouseEvent e) {
 		if (start.isVisible()) {
 			start.setVisible(false);
 			stop.setVisible(false);
+			fast.setVisible(false);
 		} else {
 			start.setVisible(true);
 			stop.setVisible(true);
+			fast.setVisible(true);
 		}
 	}
 
@@ -118,6 +125,7 @@ public class PPT implements Initializable {
 		KeyFrame keyFrame1 = new KeyFrame(duration, onFinished, keyValue, keyValue2);
 
 		timeline.getKeyFrames().add(keyFrame1);
+
 
 	}
 
