@@ -24,7 +24,7 @@
                      <font>
                         <Font size="21.0" />
                      </font></Button>
-                  <Button fx:id="start1" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Begin" prefHeight="50.0" prefWidth="79.0" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;" text="快进" textFill="WHITE">
+                  <Button fx:id="fast" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fast" prefHeight="50.0" prefWidth="79.0" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;" text="快进" textFill="WHITE">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -32,7 +32,7 @@
                         <ImageView fitHeight="34.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="start2" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Begin" prefHeight="50.0" prefWidth="79.0" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;" text="暂停" textFill="WHITE">
+                  <Button fx:id="stop" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Stop" prefHeight="50.0" prefWidth="79.0" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;" text="暂停" textFill="WHITE">
                      <font>
                         <Font size="21.0" />
                      </font>

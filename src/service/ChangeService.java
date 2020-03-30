@@ -14,6 +14,6 @@ public class ChangeService {
 	public static ArrayList<File> files;
 	public static File file ;
 	public static ImageView origin,change;
-	public static double originHight,originWidth;
+	public static double originHeight,originWidth;
 	
 }

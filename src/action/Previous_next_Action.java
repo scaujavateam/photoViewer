@@ -29,41 +29,40 @@ public class Previous_next_Action {
 //		change();
 //	}
 
-	public static void changePicture(ImageView imageView,Boolean Previous_or_next) {
+	public static void changePicture(ImageView imageView,Boolean Previous_or_next,Button button,Button button2,int order) {
+		if (page==0){
+			page=order;
+		}
 	    if(Previous_or_next) {
 	    	page++;
+			if (page==1){
+				button.setVisible(true);
+			}
+			if (page>ChangeService.files.size()-1){
+				button2.setVisible(false);
+				page--;
+				return;
+			}
 	    }
 	    if(!Previous_or_next) {
 	    	page--;
+			if (page==ChangeService.files.size()-2){
+				button2.setVisible(true);
+			}
+			if (page < 0) {
+				button.setVisible(false);
+				page++;
+				return;
+			}
 	    }
-		if (page < 0) {
-			String text = "这是第一张图片";
-			Button button = new Button(text);
-			Pane root = new Pane(button);
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add("view/iVCSS.css");
-			Stage Stage = null;
-			Stage = new Stage();
-			Stage.setTitle("提示");
-			Stage.setScene(scene);
-			Stage.show();
-			page++;
-			return;
+	    if (page==0){
+	    	button.setVisible(false);
 		}
-		if (page > ChangeService.files.size() - 1) {
-			String text = "这是最后一张图片";
-			Button button = new Button(text);
-			Pane root = new Pane(button);
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add("view/iVCSS.css");
-			Stage Stage = null;
-			Stage = new Stage();
-			Stage.setTitle("提示");
-			Stage.setScene(scene);
-			Stage.show();
-			page--;
-			return;
+	    if (page==ChangeService.files.size()-1){
+	    	button2.setVisible(false);
 		}
+
+
 		File file = ChangeService.files.get(page);
 		try {
 			image = new Image(file.toURI().toURL().toString());
