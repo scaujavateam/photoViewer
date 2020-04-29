@@ -6,9 +6,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.PictureNode;
 
+import java.awt.*;
 
 public class PaneListener {
 	Node node;
@@ -21,6 +23,7 @@ public class PaneListener {
 		this.mainUIController = mainUIController;
 		selectRectangle = new Rectangle();
 		addListener();
+		mainUIController.getFlowPaneChildren().add(selectRectangle);
 	}
 	private void addListener() {
 		//鼠标按下，初始化选择矩阵的左上角点
@@ -32,10 +35,21 @@ public class PaneListener {
 			selectRectangle.setY(nowY);
 			selectRectangle.setHeight(0);
 			selectRectangle.setWidth(0);
+			selectRectangle.setVisible(true);
 		});
 		
 		node.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {
 			this.isDragged = true;
+			double nowX = e.getX();
+			double nowY = e.getY();
+			double baseX = selectRectangle.getX();
+			double baseY = selectRectangle.getY();
+
+			selectRectangle.setWidth(Math.abs(baseX - nowX));
+			selectRectangle.setHeight(Math.abs(baseY - nowY));
+			selectRectangle.setFill(Color.BLUE);
+			selectRectangle.setStroke(Color.BLUE);
+
 		});
 		
 		//鼠标放开，更新选择矩阵的左上角点以及边长
@@ -64,7 +78,7 @@ public class PaneListener {
 //					((PictureNode)childrenNode).setSelected(false);
 				}
 			}
-			
+			selectRectangle.setVisible(false);
 		});
 	}
 	private boolean isRectOverlap(PictureNode  pictureNode) {

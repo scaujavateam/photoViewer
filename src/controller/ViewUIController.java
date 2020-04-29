@@ -1,5 +1,6 @@
 package controller;
 
+import action.*;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
@@ -17,14 +18,6 @@ import java.util.ResourceBundle;
 
 import javax.xml.ws.Holder;
 
-import action.PPTAction;
-import action.BeautyAction;
-import action.Enlarge_Small_Action;
-import action.MainAction;
-import action.OpenAction;
-import action.Previous_next_Action;
-import action.ResetAction;
-import action.RotateAction;
 import javafx.event.ActionEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,6 +41,8 @@ public class ViewUIController implements Initializable {
 	private Button rotateBtn;
 	@FXML
 	private Button beautyBtn;
+	@FXML
+	private Button moreBtn;
 	@FXML
 	private Menu MenuMore;
 	@FXML
@@ -100,8 +95,8 @@ public class ViewUIController implements Initializable {
 		resetBtn.setTooltip(new Tooltip("重置"));
 		rotateBtn.setTooltip(new Tooltip("旋转"));
 		beautyBtn.setTooltip(new Tooltip("美化"));
+		moreBtn.setTooltip(new Tooltip("更多"));
 		previousImageBtn.setTooltip(new Tooltip("上一张"));
-
 		nextImageBtn.setTooltip(new Tooltip("下一张"));
 
 	}
@@ -168,9 +163,9 @@ public class ViewUIController implements Initializable {
 	public void beautyAction(ActionEvent event) {
 		ChangeService.change = this.imageView;
 		new BeautyAction();
-
 	}
-
+	@FXML
+	public void moreAction(ActionEvent event) { new MoreAction(); }
 	// Event Listener on Button[#previousImageBtn].onAction
 	@FXML
 	public void previousAction(ActionEvent event) {

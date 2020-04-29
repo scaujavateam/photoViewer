@@ -11,6 +11,7 @@ import javafx.beans.Observable;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import service.MouseEvenHandler;
-
+import javax.swing.*;
 public class PictureNode extends Label{
 	private MainUIController mainScene;
 	private PictureFile pictureFile; 
@@ -42,7 +43,7 @@ public class PictureNode extends Label{
 	}
 	private void initData() throws MalformedURLException{
 		
-		this.setGraphicTextGap(10);
+		this.setGraphicTextGap(3);
 		this.setPadding(new Insets(1, 1, 1, 1));
 		this.setContentDisplay(ContentDisplay.TOP);
 		this.setPrefSize(110,110);
@@ -52,6 +53,7 @@ public class PictureNode extends Label{
 		this.pictureName = new Text(pictureFile.getImageName());
 		this.setText(pictureName.getText());
 		this.setGraphic(imageView);
+		this.setAlignment(Pos.CENTER);
 		pictureNode.setId("pictureNode");
 	}
 	
@@ -127,7 +129,7 @@ public class PictureNode extends Label{
 			@Override
 			public void invalidated(Observable observable) {
 				if(selected.get()) {
-					pictureNode.setStyle("-fx-background-color:#a7a7a7;");
+					pictureNode.setStyle("-fx-background-color:#cce8ff;");
 //					mainScene.getText().setText("");
 					mainScene.getTextTwo().setText("已选中 0  张图片");
 				}else {
@@ -139,7 +141,7 @@ public class PictureNode extends Label{
 		});
 		this.setOnMouseEntered((MouseEvent e) -> {
 			if (!selected.get())
-				this.setStyle("-fx-background-color:linear-gradient(to bottom,#3e4147 1%,  #a7a7a7 98%);");
+				this.setStyle("-fx-background-color:#e5f3ff;");
 //			    mainScene.getText().setText("");
 			    
 		});
