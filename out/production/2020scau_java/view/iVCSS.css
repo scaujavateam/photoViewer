@@ -164,7 +164,7 @@
 
 
 #flowPane{
-	-fx-background-color: #3e4147;
+	-fx-background-color: #ffffff;
 }
    
     
@@ -231,17 +231,13 @@
 
 /*目录树 */
 .tree-view {
-    -fx-background-color: linear-gradient(to left,#3e4147 1%,  #ffffff 98%);
+    -fx-background-color:#f5f6f7;
     -fx-background-insets: 10, 1;
-    
-
-    /* There is some oddness if padding is in em values rather than pixels,
-       in particular, the left border of the control doesn't show. */
-    -fx-padding: 1; /* 0.083333em; */
+    -fx-padding: 1;
 }
 
 .tree-view:focused {
-    -fx-background-color:linear-gradient(to left,#3e4147 1%,  #ffffff 98%);
+    -fx-background-color:#feffff;
     -fx-background-insets: -1.4, 0, 1;
 
     /* There is some oddness if padding is in em values rather than pixels,
@@ -275,11 +271,11 @@
 }
 
 .tree-cell {/*主要 */
-    -fx-background-color:  #3e4147;
-    -fx-padding: 0.20em; /* 每个树节点的长度 */
-    -fx-text-fill: #ffffff;
+    -fx-background-color:  #f0f0f0;
+    -fx-padding: 8px;
+    -fx-text-fill: #000000;
     -fx-font-size: 17px;
-    -fx-indent: 15;/*下一级目录缩进长度 */
+    -fx-indent: 13;/*下一级目录缩进长度 */
     -fx-font-weight:bold;
 }
 
@@ -288,7 +284,7 @@
 }
 
 .tree-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-cell:focused {
-    -fx-background-color:  #a7a7a7;/*选择后退出的颜色 */
+    -fx-background-color: #d9d9d9;/*选择后退出的颜色 */
     -fx-background-insets: 0, 1, 2;
 }
 
@@ -302,13 +298,13 @@
 .tree-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-cell:filled:selected,
 .tree-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-cell:filled:selected:hover {
     -fx-background: -fx-accent;
-    -fx-background-color: linear-gradient(to left,#3e4147 1%,  #c0c0c0 98%);/*点击后的颜色 */
+    -fx-background-color:  #cce8ff;/*点击后的颜色 */
     -fx-text-fill: #000000;/*-fx-selection-bar-text;*/
 }
 
 .tree-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-cell:filled:focused:selected:hover {
     -fx-background: -fx-accent;
-    -fx-background-color: linear-gradient(to left,#3e4147 1%,  #a7a7a7 98%);/*点击时的颜色 */
+    -fx-background-color: #e5f3ff;/*点击时的颜色 */
     -fx-background-insets: 0, 1, 2;
     -fx-text-fill: #000000;
 }
@@ -360,8 +356,7 @@
 
 .tree-cell:filled:hover,
 .tree-table-row-cell:filled:hover {/*鼠标覆盖的变化 */
-    -fx-background-color: 
-        linear-gradient(to left,#3e4147 1%,  #ffffff 98%);
+    -fx-background-color:#e5f3ff;
     -fx-text-fill: #272d39;
     -fx-font-weight:bold;
 }
