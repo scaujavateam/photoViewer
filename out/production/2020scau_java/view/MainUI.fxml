@@ -15,7 +15,7 @@
       </HBox>
    </left>
    <right>
-      <ScrollPane id="scrollPane" prefHeight="773.0" prefWidth="889.0" BorderPane.alignment="CENTER">
+      <ScrollPane id="scrollPane" prefHeight="773.0" prefWidth="889.0" BorderPane.alignment="CENTER_LEFT">
          <content>
             <FlowPane fx:id="flowPane" prefHeight="741.0" prefWidth="884.0" />
          </content>
