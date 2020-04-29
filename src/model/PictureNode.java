@@ -19,9 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import service.MouseEvenHandler;
-
 import javax.swing.*;
-
 public class PictureNode extends Label{
 	private MainUIController mainScene;
 	private PictureFile pictureFile; 
@@ -58,6 +56,8 @@ public class PictureNode extends Label{
 		this.setAlignment(Pos.CENTER);
 		pictureNode.setId("pictureNode");
 	}
+	
+	
 
 	public Image getImage() {
 		try {

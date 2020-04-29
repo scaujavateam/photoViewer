@@ -106,10 +106,17 @@
     -fx-scale-x:  0.6;/*宽度 */
     -fx-scale-y:  0.6;/*长度 */
 }
+#moreBtn{
+    -fx-background-color: #0078d7;
+    -fx-text-fill: transparent;
+    -fx-scale-x:  0.6;/*宽度 */
+    -fx-scale-y:  0.6;/*长度 */
+}
 .button:hover{
 
     /*#258ce8*/
     -fx-effect: innershadow(gaussian,#258ce8,40,0.2,0,0);
+
 }
 .button_open:pressed{
  	-fx-translate-y: 2px;
