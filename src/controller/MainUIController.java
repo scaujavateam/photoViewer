@@ -3,6 +3,8 @@ package controller;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import model.FileTree;
 import model.MyContextMenu;
@@ -11,7 +13,6 @@ import model.PictureNode;
 import service.ChangeService;
 import service.PaneListener;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 
 import java.io.File;
 import java.net.URL;
@@ -27,10 +28,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.FlowPane;
 
-import javafx.scene.control.ToolBar;
-import javafx.scene.control.Tooltip;
-import javafx.scene.control.TreeView;
-
 public class MainUIController implements Initializable {
 
 	private MainUIController mainUI;
@@ -39,6 +36,8 @@ public class MainUIController implements Initializable {
 	public static String theFilePath;
 	@FXML
 	private TreeView<PictureFile> treeview;
+	@FXML
+	private Pane pane;
 	@FXML
 	private FlowPane flowPane;
 	@FXML
@@ -57,7 +56,7 @@ public class MainUIController implements Initializable {
 	private Button deleteBtn;
 	@FXML
 	private Button PPT;
-	
+
 //    public void setList() {
 //    	files=new ArrayList<File>();
 //    	for(int i=0;i<pictures.size();i++) {
@@ -65,8 +64,8 @@ public class MainUIController implements Initializable {
 //    	}
 //    	ChangeService.files=files;
 //    }
-	
-	public MainUIController() {	
+
+	public MainUIController() {
 		mainUI = this;
 	}
 
@@ -92,8 +91,15 @@ public class MainUIController implements Initializable {
 		return flowPane;
 	}
 
+	public Pane getPane() {
+		return pane;
+	}
+
 	public  ObservableList<Node> getFlowPaneChildren() {
 		return flowPane.getChildren();
+	}
+	public  ObservableList<Node> getPaneChildren() {
+		return pane.getChildren();
 	}
 	public Text getText() {
 		return text;
@@ -159,7 +165,7 @@ public class MainUIController implements Initializable {
 //		pasteBtn.setTooltip(new Tooltip("粘贴"));
 		new PasteAction(mainUI);
 	}
-	
+
 
 	// Event Listener on Button[#deleteBtn].onAction
 	@FXML

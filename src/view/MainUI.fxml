@@ -14,13 +14,6 @@
          </children>
       </HBox>
    </left>
-   <right>
-      <ScrollPane id="scrollPane" prefHeight="773.0" prefWidth="889.0" BorderPane.alignment="CENTER_LEFT">
-         <content>
-            <FlowPane fx:id="flowPane" prefHeight="741.0" prefWidth="884.0" />
-         </content>
-      </ScrollPane>
-   </right>
    <top>
       <ToolBar id="toolBar" fx:id="toolBar" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
@@ -48,4 +41,15 @@
          </children>
       </HBox>
    </bottom>
+   <center>
+      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane id="scrollPane" fx:id="scrollPane" prefHeight="773.0" prefWidth="889.0">
+               <content>
+                  <FlowPane fx:id="flowPane" prefHeight="741.0" prefWidth="884.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </center>
 </BorderPane>
