@@ -30,6 +30,10 @@ public class Previous_next_Action {
 //	}
 
 	public static void changePicture(ImageView imageView,Boolean Previous_or_next,Button button,Button button2,int order) {
+	    if (order==-1){
+	    	page=0;
+	    	return;
+		}
 		if (page==0){
 			page=order;
 		}
@@ -57,9 +61,11 @@ public class Previous_next_Action {
 	    }
 	    if (page==0){
 	    	button.setVisible(false);
+			button2.setVisible(true);
 		}
 	    if (page==ChangeService.files.size()-1){
 	    	button2.setVisible(false);
+			button.setVisible(true);
 		}
 
 

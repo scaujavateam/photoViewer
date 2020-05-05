@@ -23,7 +23,7 @@ public class PaneListener {
 		this.mainUIController = mainUIController;
 		selectRectangle = new Rectangle();
 		addListener();
-		mainUIController.getFlowPaneChildren().add(selectRectangle);
+
 	}
 	private void addListener() {
 		//鼠标按下，初始化选择矩阵的左上角点
@@ -36,6 +36,7 @@ public class PaneListener {
 			selectRectangle.setHeight(0);
 			selectRectangle.setWidth(0);
 			selectRectangle.setVisible(true);
+
 		});
 		
 		node.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {
@@ -44,11 +45,12 @@ public class PaneListener {
 			double nowY = e.getY();
 			double baseX = selectRectangle.getX();
 			double baseY = selectRectangle.getY();
-
+			selectRectangle.setVisible(true);
 			selectRectangle.setWidth(Math.abs(baseX - nowX));
 			selectRectangle.setHeight(Math.abs(baseY - nowY));
 			selectRectangle.setFill(Color.BLUE);
 			selectRectangle.setStroke(Color.BLUE);
+			mainUIController.getPaneChildren().add(selectRectangle);
 
 		});
 		
