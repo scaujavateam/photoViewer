@@ -78,7 +78,7 @@ public class ViewUIController implements Initializable {
 
 		ChangeService.originHeight = imageView.getFitHeight();
 		ChangeService.originWidth = imageView.getFitWidth();
-
+		System.out.println(ChangeService.files.indexOf(ChangeService.file));
 		if (ChangeService.files.indexOf(ChangeService.file)==0){
 			previousImageBtn.setVisible(false);
 		}
@@ -108,6 +108,7 @@ public class ViewUIController implements Initializable {
 	@FXML
 	private void Back(ActionEvent e) {
 		new MainAction();
+		Previous_next_Action.changePicture(imageView, true,previousImageBtn,nextImageBtn,-1);
 	}
 
 	@FXML
@@ -165,7 +166,9 @@ public class ViewUIController implements Initializable {
 		new BeautyAction();
 	}
 	@FXML
-	public void moreAction(ActionEvent event) { new MoreAction(); }
+	public void moreAction(ActionEvent event) {
+		ChangeService.change = this.imageView;
+		new MoreAction(); }
 	// Event Listener on Button[#previousImageBtn].onAction
 	@FXML
 	public void previousAction(ActionEvent event) {

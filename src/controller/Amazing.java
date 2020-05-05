@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
+import action.ClipAction;
 import action.OpenAction;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
@@ -80,9 +81,10 @@ public class Amazing implements Initializable {
 
 	@FXML
 	private void Change(ActionEvent event) {
+
 		ChangeService.change=imageview;
 		// App.setStage(stage);
-		new OpenAction();
+
 
 	}
 

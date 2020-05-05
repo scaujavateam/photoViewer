@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import model.FileTree;
 import model.MyContextMenu;
@@ -41,6 +42,8 @@ public class MainUIController implements Initializable {
 	private TreeView<PictureFile> treeview;
 	@FXML
 	private FlowPane flowPane;
+	@FXML
+	private Pane Pane;
 	@FXML
 	private Text text;
 	@FXML
@@ -92,8 +95,15 @@ public class MainUIController implements Initializable {
 		return flowPane;
 	}
 
+	public Pane getPane() {
+		return Pane;
+	}
+
 	public  ObservableList<Node> getFlowPaneChildren() {
 		return flowPane.getChildren();
+	}
+	public  ObservableList<Node> getPaneChildren() {
+		return Pane.getChildren();
 	}
 	public Text getText() {
 		return text;
@@ -114,7 +124,7 @@ public class MainUIController implements Initializable {
 	 * 用作刷新图片显示界面
 	 */
 	public void showPicture() {
-		System.out.println("233");
+
 		flowPane.getChildren().remove(0, flowPane.getChildren().size());
 		for (PictureNode pNode : pictures) {
 			flowPane.getChildren().add(pNode);
