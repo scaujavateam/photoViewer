@@ -10,90 +10,76 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.PictureNode;
 
+import java.awt.*;
 
 public class PaneListener {
 	Node node;
 	MainUIController mainUIController;
 	private Rectangle selectRectangle;
-	private double sx,sy;
-
+	private boolean isDragged;
+	
 	public PaneListener(Node node,MainUIController mainUIController) {
 		this.node = node;
 		this.mainUIController = mainUIController;
-		selectRectangle = new Rectangle(0,0,100,100);
-
+		selectRectangle = new Rectangle();
 		addListener();
+
 	}
 	private void addListener() {
 		//鼠标按下，初始化选择矩阵的左上角点
 		node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
-			this.sx = e.getX();
-			this.sy = e.getY();
-			System.out.println(this.sx+" "+this.sy);
-			if(mainUIController.getPaneChildren().indexOf(selectRectangle)==-1){
-				mainUIController.getPaneChildren().add(selectRectangle);
-				selectRectangle.relocate(2,1.5);}
-			selectRectangle.setX(sx);
-			selectRectangle.setY(sy);
+			isDragged = false;
+			double nowX = e.getX();
+			double nowY = e.getY();
+			selectRectangle.setX(nowX);
+			selectRectangle.setY(nowY);
 			selectRectangle.setHeight(0);
 			selectRectangle.setWidth(0);
-			selectRectangle.setFill(Color.valueOf("#aabbff7f"));
-			selectRectangle.setStrokeWidth(0.2);
-			selectRectangle.setStroke(Color.BLUE);
-
 			selectRectangle.setVisible(true);
-		});
 
+		});
+		
 		node.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {
-			double w=e.getX()-this.sx;
-			double h=e.getY()-this.sy;
-			if(w<0){
-				selectRectangle.setWidth(-w);
-				selectRectangle.setX(this.sx+w);
-			}
-			else{
-				selectRectangle.setWidth(w);
-			}
-			if(h<0){
-				selectRectangle.setHeight(-h);
-				selectRectangle.setY(this.sy+h);
-			}
-			else {
-				selectRectangle.setHeight(h);
-			}
+			this.isDragged = true;
+			double nowX = e.getX();
+			double nowY = e.getY();
+			double baseX = selectRectangle.getX();
+			double baseY = selectRectangle.getY();
+			selectRectangle.setVisible(true);
+			selectRectangle.setWidth(Math.abs(baseX - nowX));
+			selectRectangle.setHeight(Math.abs(baseY - nowY));
+			selectRectangle.setFill(Color.BLUE);
+			selectRectangle.setStroke(Color.BLUE);
+			mainUIController.getPaneChildren().add(selectRectangle);
+
 		});
-
-
+		
 		//鼠标放开，更新选择矩阵的左上角点以及边长
 		node.addEventHandler(MouseEvent.MOUSE_RELEASED, (MouseEvent e) -> {
-			double w=e.getX()-this.sx;
-			double h=e.getY()-this.sy;
-			if(w<0){
-				selectRectangle.setWidth(-w);
-				selectRectangle.setX(this.sx+w);
-			}
-			else{
-				selectRectangle.setWidth(w);
-			}
-			if(h<0){
-				selectRectangle.setHeight(-h);
-				selectRectangle.setY(this.sy+h);
-			}
-			else {
-				selectRectangle.setHeight(h);
-			}
+			double nowX = e.getX();
+			double nowY = e.getY();
+			double baseX = selectRectangle.getX();
+			double baseY = selectRectangle.getY();
+			
+			selectRectangle.setX(Math.min(baseX, nowX));
+			selectRectangle.setY(Math.min(baseY, nowY));
+			
+			selectRectangle.setWidth(Math.abs(baseX - nowX));
+			selectRectangle.setHeight(Math.abs(baseY - nowY));
+			
 //			System.out.println(selectRectangle);
-
+			
 			//图片和选择矩阵的判断
-			PictureNode.clearSelected();
-			for(Node childrenNode:  mainUIController.getFlowPaneChildren()) {
-				if(childrenNode instanceof PictureNode) {
-					if(isRectOverlap((PictureNode)childrenNode))
-						((PictureNode)childrenNode).setSelected(true);
-				}
+			if(this.isDragged) {				
+				PictureNode.clearSelected();
+				for(Node childrenNode:  mainUIController.getFlowPaneChildren()) {
+					if(childrenNode instanceof PictureNode) {
+						if(isRectOverlap((PictureNode)childrenNode))
+							((PictureNode)childrenNode).setSelected(true);
+					}
 //					((PictureNode)childrenNode).setSelected(false);
+				}
 			}
-
 			selectRectangle.setVisible(false);
 		});
 	}
