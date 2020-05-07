@@ -39,7 +39,6 @@ public class More implements Initializable {
 	private void beautyAction1(ActionEvent e) {
 		ChangeService.change = this.imageview;
 		new BeautyAction();
-
 	}
 	@FXML
 	private void customAction(ActionEvent e){}
