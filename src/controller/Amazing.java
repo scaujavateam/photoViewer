@@ -124,10 +124,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Sepiatone(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  red;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:  #4169E1 ;-fx-background-color: #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
@@ -141,10 +141,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Origin(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:   #4169E1;-fx-background-color:  #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 
 		slider.setOpacity(0.0);
 		imageview.setEffect(null);
@@ -154,10 +154,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Overlay(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:  #4169E1;-fx-background-color: #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
@@ -173,10 +173,10 @@ public class Amazing implements Initializable {
 	private void Bloom(ActionEvent e) {
 
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:   #4169E1;-fx-background-color: #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
 		Bloom bloom = new Bloom();
@@ -190,10 +190,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Mercury(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:   #4169E1;-fx-background-color: #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
 		ColorAdjust color = new ColorAdjust();
@@ -214,10 +214,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Exclusion(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:   #4169E1;-fx-background-color: #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
 		Blend blend = new Blend();
@@ -233,10 +233,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Arctic(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:   #4169E1;-fx-background-color:  #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
 		ColorAdjust color = new ColorAdjust();
@@ -253,10 +253,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Denim(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:   #4169E1;-fx-background-color:  #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
 		ColorAdjust color = new ColorAdjust();
@@ -273,10 +273,10 @@ public class Amazing implements Initializable {
 	@FXML
 	private void Neo(ActionEvent e) {
 		if (test != null) {
-			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
+			test.setStyle("-fx-border-color:   #4169E1;-fx-background-color:  #bbddff;");
 		}
 		test = ((Button) e.getSource());
-		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
+		((Button) e.getSource()).setStyle("-fx-border-color:  #f2f2f2;-fx-background-color: #bbddff;-fx-border-width: 2;");
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
 		ColorAdjust color = new ColorAdjust();
@@ -585,6 +585,6 @@ public class Amazing implements Initializable {
 		.bind(ChangeService.stage.heightProperty().subtract(toppane.heightProperty()).divide(4).multiply(3));
 
       slider.prefWidthProperty().bind(imageview.fitWidthProperty().divide(4).multiply(3));
-      ChangeButton.setTooltip(new Tooltip("裁剪和旋转"));
+
 	}
 }
