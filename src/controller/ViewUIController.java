@@ -7,16 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Button;
 
-import javafx.scene.text.Text;
 import model.PictureNode;
 import service.ChangeService;
 
-import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.xml.ws.Holder;
 
 import javafx.event.ActionEvent;
 import javafx.scene.image.Image;
@@ -57,6 +52,7 @@ public class ViewUIController implements Initializable {
 	private ToolBar toolbar;
 
 	private Image image;
+	private ImageView origin;
 
 	// public ViewUIController() {
 	// viewUIController = this;
@@ -89,6 +85,7 @@ public class ViewUIController implements Initializable {
 		imageView.setPreserveRatio(true);
 		imageView.setSmooth(true);
 		imageView.setImage(image);
+		origin=imageView;
 		//toolbar.setVisible(true);
 		enlargeBtn.setTooltip(new Tooltip("放大"));
 		smallBtn.setTooltip(new Tooltip("缩小"));

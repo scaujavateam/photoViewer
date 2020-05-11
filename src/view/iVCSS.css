@@ -126,7 +126,7 @@
 } 
 
 #ChangeButton{
-	-fx-background-image:url(caijian.png);
+
 	-fx-text-fill:transparent ;	
 }
 .scroll-pane {
