@@ -2,6 +2,7 @@ package controller;
 
 import action.BeautyAction;
 import action.ClipAction;
+import action.CustomAction;
 import action.OpenAction;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -23,8 +24,6 @@ import java.util.ResourceBundle;
 
 public class More implements Initializable {
 
-
-
 	@FXML
 	private ImageView imageview;
 	@FXML
@@ -37,11 +36,16 @@ public class More implements Initializable {
 
 	@FXML
 	private void beautyAction1(ActionEvent e) {
+		System.out.println("beautyAction");
 		ChangeService.change = this.imageview;
 		new BeautyAction();
 	}
 	@FXML
-	private void customAction(ActionEvent e){}
+	private void customAction(ActionEvent e){
+		System.out.println("customAtion");
+		ChangeService.change = this.imageview;
+		new CustomAction();
+	}
 
 
 	@FXML
@@ -51,13 +55,13 @@ public class More implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
 		imageview.setImage(ChangeService.change.getImage());
 		imageview.setEffect(ChangeService.change.getEffect());
 		imageview.setViewport(ChangeService.change.getViewport());
 		imageview.setNodeOrientation(ChangeService.change.getNodeOrientation());
 		imageview.setRotate(ChangeService.change.getRotate());
 
+		System.out.println("More init");
 	}
 
 }
