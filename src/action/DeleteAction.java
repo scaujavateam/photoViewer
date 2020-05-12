@@ -2,7 +2,7 @@ package action;
 
 import application.Main3;
 import controller.MainUIController;
-import model.MyAlert;
+import model.*;
 import model.PictureNode;
 
 public class DeleteAction {

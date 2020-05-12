@@ -7,8 +7,8 @@ import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Button;
 
 import javafx.scene.text.Text;
-import model.PictureNode;
-import service.ChangeService;
+import model.*;
+import service.*;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -17,14 +17,7 @@ import java.util.ResourceBundle;
 
 import javax.xml.ws.Holder;
 
-import action.PPTAction;
-import action.BeautyAction;
-import action.Enlarge_Small_Action;
-import action.MainAction;
-import action.OpenAction;
-import action.Previous_next_Action;
-import action.ResetAction;
-import action.RotateAction;
+import action.*;
 import javafx.event.ActionEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

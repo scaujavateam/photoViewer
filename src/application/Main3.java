@@ -2,6 +2,7 @@ package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
@@ -24,7 +25,8 @@ public class Main3 extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add("view/iVCSS.css");
 			ChangeService.stage.setScene(scene);
-			ChangeService.stage.setTitle("iViewer-1.0");
+			ChangeService.stage.setTitle("照片");
+			ChangeService.stage.centerOnScreen();
 			ChangeService.stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -126,10 +126,10 @@ public class MainUIController implements Initializable {
 			flowPane.getChildren().add(pNode);
 		}
 		files=new ArrayList<File>();
-    	for(int i=0;i<pictures.size();i++) {
-    		files.add(pictures.get(i).getImageFile());
-    	}
-    	ChangeService.files=files;
+		for(int i=0;i<pictures.size();i++) {
+			files.add(pictures.get(i).getImageFile());
+		}
+		ChangeService.files=files;
 	}
 
 	public void clearPictures() {
@@ -149,7 +149,7 @@ public class MainUIController implements Initializable {
 	@FXML
 	public void openBtnAction(ActionEvent event) {
 		//openBtn.setTooltip(new Tooltip("打开"));
-		 new OpenAction();
+		new OpenAction();
 	}
 
 	// Event Listener on Button[#copyBtn].onAction
