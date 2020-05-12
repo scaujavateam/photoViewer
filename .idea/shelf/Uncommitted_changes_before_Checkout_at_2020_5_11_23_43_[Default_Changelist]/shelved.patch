@@ -1,0 +1,189 @@
+Index: src/service/PaneListener.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package service;\r\n\r\nimport controller.MainUIController;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.input.MouseEvent;\r\nimport javafx.scene.layout.FlowPane;\r\nimport javafx.scene.layout.Pane;\r\nimport javafx.scene.layout.TilePane;\r\nimport javafx.scene.paint.Color;\r\nimport javafx.scene.shape.Rectangle;\r\nimport model.PictureNode;\r\n\r\nimport java.awt.*;\r\n\r\npublic class PaneListener {\r\n\tNode node;\r\n\tMainUIController mainUIController;\r\n\tprivate Rectangle selectRectangle;\r\n\tprivate boolean isDragged;\r\n\t\r\n\tpublic PaneListener(Node node,MainUIController mainUIController) {\r\n\t\tthis.node = node;\r\n\t\tthis.mainUIController = mainUIController;\r\n\t\tselectRectangle = new Rectangle();\r\n\t\taddListener();\r\n\r\n\t}\r\n\tprivate void addListener() {\r\n\t\t//鼠标按下，初始化选择矩阵的左上角点\r\n\t\tnode.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {\r\n\t\t\tisDragged = false;\r\n\t\t\tdouble nowX = e.getX();\r\n\t\t\tdouble nowY = e.getY();\r\n\t\t\tselectRectangle.setX(nowX);\r\n\t\t\tselectRectangle.setY(nowY);\r\n\t\t\tselectRectangle.setHeight(0);\r\n\t\t\tselectRectangle.setWidth(0);\r\n\t\t\tselectRectangle.setVisible(true);\r\n\r\n\t\t});\r\n\t\t\r\n\t\tnode.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {\r\n\t\t\tthis.isDragged = true;\r\n\t\t\tdouble nowX = e.getX();\r\n\t\t\tdouble nowY = e.getY();\r\n\t\t\tdouble baseX = selectRectangle.getX();\r\n\t\t\tdouble baseY = selectRectangle.getY();\r\n\t\t\tselectRectangle.setVisible(true);\r\n\t\t\tselectRectangle.setWidth(Math.abs(baseX - nowX));\r\n\t\t\tselectRectangle.setHeight(Math.abs(baseY - nowY));\r\n\t\t\tselectRectangle.setFill(Color.BLUE);\r\n\t\t\tselectRectangle.setStroke(Color.BLUE);\r\n\t\t\tmainUIController.getPaneChildren().add(selectRectangle);\r\n\r\n\t\t});\r\n\t\t\r\n\t\t//鼠标放开，更新选择矩阵的左上角点以及边长\r\n\t\tnode.addEventHandler(MouseEvent.MOUSE_RELEASED, (MouseEvent e) -> {\r\n\t\t\tdouble nowX = e.getX();\r\n\t\t\tdouble nowY = e.getY();\r\n\t\t\tdouble baseX = selectRectangle.getX();\r\n\t\t\tdouble baseY = selectRectangle.getY();\r\n\t\t\t\r\n\t\t\tselectRectangle.setX(Math.min(baseX, nowX));\r\n\t\t\tselectRectangle.setY(Math.min(baseY, nowY));\r\n\t\t\t\r\n\t\t\tselectRectangle.setWidth(Math.abs(baseX - nowX));\r\n\t\t\tselectRectangle.setHeight(Math.abs(baseY - nowY));\r\n\t\t\t\r\n//\t\t\tSystem.out.println(selectRectangle);\r\n\t\t\t\r\n\t\t\t//图片和选择矩阵的判断\r\n\t\t\tif(this.isDragged) {\t\t\t\t\r\n\t\t\t\tPictureNode.clearSelected();\r\n\t\t\t\tfor(Node childrenNode:  mainUIController.getFlowPaneChildren()) {\r\n\t\t\t\t\tif(childrenNode instanceof PictureNode) {\r\n\t\t\t\t\t\tif(isRectOverlap((PictureNode)childrenNode))\r\n\t\t\t\t\t\t\t((PictureNode)childrenNode).setSelected(true);\r\n\t\t\t\t\t}\r\n//\t\t\t\t\t((PictureNode)childrenNode).setSelected(false);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tselectRectangle.setVisible(false);\r\n\t\t});\r\n\t}\r\n\tprivate boolean isRectOverlap(PictureNode  pictureNode) {\r\n\t\tdouble imageNodeCenterPointX = pictureNode.getLayoutX() + pictureNode.getWidth()/2.0;\r\n\t\tdouble imageNodeCenterPointY = pictureNode.getLayoutY() + pictureNode.getHeight()/2.0;\r\n\t\tdouble selectRectangleCenterPointX = selectRectangle.getX() + selectRectangle.getWidth()/2.0;\r\n\t\tdouble selectRectangleCenterPointY = selectRectangle.getY() + selectRectangle.getHeight()/2.0;\r\n\t\treturn Math.abs(imageNodeCenterPointX - selectRectangleCenterPointX) <= (pictureNode.getWidth()/2.0 + selectRectangle.getWidth()/2.0) &&\r\n\t\t\t\tMath.abs(imageNodeCenterPointY - selectRectangleCenterPointY) <= (pictureNode.getHeight()/2.0 + selectRectangle.getHeight()/2.0);\r\n\t}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/service/PaneListener.java	(revision 8b929b099757be4ea1bd60f758c1d231ea4dce74)
++++ src/service/PaneListener.java	(date 1589211772979)
+@@ -17,69 +17,86 @@
+ 	MainUIController mainUIController;
+ 	private Rectangle selectRectangle;
+ 	private boolean isDragged;
++	private double sx,sy;
+ 	
+ 	public PaneListener(Node node,MainUIController mainUIController) {
+ 		this.node = node;
+ 		this.mainUIController = mainUIController;
+-		selectRectangle = new Rectangle();
++		selectRectangle = new Rectangle(0,0,100,100);
++
+ 		addListener();
+ 
+ 	}
+ 	private void addListener() {
+ 		//鼠标按下，初始化选择矩阵的左上角点
+ 		node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
+-			isDragged = false;
+-			double nowX = e.getX();
+-			double nowY = e.getY();
+-			selectRectangle.setX(nowX);
+-			selectRectangle.setY(nowY);
++			this.sx = e.getX();
++			this.sy = e.getY();
++			System.out.println(this.sx+" "+this.sy);
++			if(mainUIController.getPaneChildren().indexOf(selectRectangle)==-1){
++				mainUIController.getPaneChildren().add(selectRectangle);
++				selectRectangle.relocate(2,1.5);}
++			selectRectangle.setX(sx);
++			selectRectangle.setY(sy);
+ 			selectRectangle.setHeight(0);
+ 			selectRectangle.setWidth(0);
++			selectRectangle.setFill(Color.valueOf("#aabbff7f"));
++			selectRectangle.setStrokeWidth(0.2);
++			selectRectangle.setStroke(Color.BLUE);
++
+ 			selectRectangle.setVisible(true);
+-
+ 		});
+-		
++
+ 		node.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {
+-			this.isDragged = true;
+-			double nowX = e.getX();
+-			double nowY = e.getY();
+-			double baseX = selectRectangle.getX();
+-			double baseY = selectRectangle.getY();
+-			selectRectangle.setVisible(true);
+-			selectRectangle.setWidth(Math.abs(baseX - nowX));
+-			selectRectangle.setHeight(Math.abs(baseY - nowY));
+-			selectRectangle.setFill(Color.BLUE);
+-			selectRectangle.setStroke(Color.BLUE);
+-			mainUIController.getPaneChildren().add(selectRectangle);
+-
++			double w=e.getX()-this.sx;
++			double h=e.getY()-this.sy;
++			if(w<0){
++				selectRectangle.setWidth(-w);
++				selectRectangle.setX(this.sx+w);
++			}
++			else{
++				selectRectangle.setWidth(w);
++			}
++			if(h<0){
++				selectRectangle.setHeight(-h);
++				selectRectangle.setY(this.sy+h);
++			}
++			else {
++				selectRectangle.setHeight(h);
++			}
+ 		});
+-		
++
++
+ 		//鼠标放开，更新选择矩阵的左上角点以及边长
+ 		node.addEventHandler(MouseEvent.MOUSE_RELEASED, (MouseEvent e) -> {
+-			double nowX = e.getX();
+-			double nowY = e.getY();
+-			double baseX = selectRectangle.getX();
+-			double baseY = selectRectangle.getY();
+-			
+-			selectRectangle.setX(Math.min(baseX, nowX));
+-			selectRectangle.setY(Math.min(baseY, nowY));
+-			
+-			selectRectangle.setWidth(Math.abs(baseX - nowX));
+-			selectRectangle.setHeight(Math.abs(baseY - nowY));
+-			
++			double w=e.getX()-this.sx;
++			double h=e.getY()-this.sy;
++			if(w<0){
++				selectRectangle.setWidth(-w);
++				selectRectangle.setX(this.sx+w);
++			}
++			else{
++				selectRectangle.setWidth(w);
++			}
++			if(h<0){
++				selectRectangle.setHeight(-h);
++				selectRectangle.setY(this.sy+h);
++			}
++			else {
++				selectRectangle.setHeight(h);
++			}
+ //			System.out.println(selectRectangle);
+-			
++
+ 			//图片和选择矩阵的判断
+-			if(this.isDragged) {				
+-				PictureNode.clearSelected();
+-				for(Node childrenNode:  mainUIController.getFlowPaneChildren()) {
+-					if(childrenNode instanceof PictureNode) {
+-						if(isRectOverlap((PictureNode)childrenNode))
+-							((PictureNode)childrenNode).setSelected(true);
+-					}
++			PictureNode.clearSelected();
++			for(Node childrenNode:  mainUIController.getFlowPaneChildren()) {
++				if(childrenNode instanceof PictureNode) {
++					if(isRectOverlap((PictureNode)childrenNode))
++						((PictureNode)childrenNode).setSelected(true);
++				}
+ //					((PictureNode)childrenNode).setSelected(false);
+-				}
+ 			}
++
+ 			selectRectangle.setVisible(false);
+ 		});
+ 	}
+Index: src/controller/MainUIController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\n\r\nimport javafx.fxml.FXML;\r\n\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.layout.Pane;\r\nimport javafx.scene.text.Text;\r\nimport model.FileTree;\r\nimport model.MyContextMenu;\r\nimport model.PictureFile;\r\nimport model.PictureNode;\r\nimport service.ChangeService;\r\nimport service.PaneListener;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.control.Button;\r\n\r\nimport java.io.File;\r\nimport java.net.URL;\r\nimport java.util.ArrayList;\r\nimport java.util.ResourceBundle;\r\n\r\nimport action.CopyAction;\r\nimport action.DeleteAction;\r\nimport action.OpenAction;\r\nimport action.PasteAction;\r\nimport action.*;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.scene.layout.FlowPane;\r\n\r\nimport javafx.scene.control.ToolBar;\r\nimport javafx.scene.control.Tooltip;\r\nimport javafx.scene.control.TreeView;\r\n\r\npublic class MainUIController implements Initializable {\r\n\r\n\tprivate MainUIController mainUI;\r\n\tprivate ArrayList<PictureNode> pictures;\r\n\tprivate ArrayList<File> files;\r\n\tpublic static String theFilePath;\r\n\t@FXML\r\n\tprivate TreeView<PictureFile> treeview;\r\n\t@FXML\r\n\tprivate FlowPane flowPane;\r\n\t@FXML\r\n\tprivate Pane Pane;\r\n\t@FXML\r\n\tprivate Text text;\r\n\t@FXML\r\n\tprivate Text textTwo;\r\n\t@FXML\r\n\tprivate ToolBar toolBar;\r\n\t@FXML\r\n\tprivate Button openBtn;\r\n\t@FXML\r\n\tprivate Button copyBtn;\r\n\t@FXML\r\n\tprivate Button pasteBtn;\r\n\t@FXML\r\n\tprivate Button deleteBtn;\r\n\t@FXML\r\n\tprivate Button PPT;\r\n\t\r\n//    public void setList() {\r\n//    \tfiles=new ArrayList<File>();\r\n//    \tfor(int i=0;i<pictures.size();i++) {\r\n//    \t\tfiles.add(pictures.get(i).getImageFile());\r\n//    \t}\r\n//    \tChangeService.files=files;\r\n//    }\r\n\t\r\n\tpublic MainUIController() {\t\r\n\t\tmainUI = this;\r\n\t}\r\n\r\n\t@Override\r\n\tpublic void initialize(URL location, ResourceBundle resources) {\r\n\t\tinitData();\r\n\t}\r\n\r\n\tpublic void initData() {\r\n\t\tpictures = new ArrayList<>();\r\n\t\ttreeview = new FileTree(mainUI, treeview).gettreeView();\r\n\t\t// showPicture();\r\n\t\tnew PaneListener(flowPane,mainUI);\r\n\t\tnew MyContextMenu(flowPane, mainUI,false);\r\n\t\topenBtn.setTooltip(new Tooltip(\"打开\"));\r\n\t\tcopyBtn.setTooltip(new Tooltip(\"复制\"));\r\n\t\tpasteBtn.setTooltip(new Tooltip(\"粘贴\"));\r\n\t\tdeleteBtn.setTooltip(new Tooltip(\"删除\"));\r\n\t\tPPT.setTooltip(new Tooltip(\"幻灯片播放\"));\r\n\t}\r\n\r\n\tpublic FlowPane getFlowPane() {\r\n\t\treturn flowPane;\r\n\t}\r\n\r\n\tpublic Pane getPane() {\r\n\t\treturn Pane;\r\n\t}\r\n\r\n\tpublic  ObservableList<Node> getFlowPaneChildren() {\r\n\t\treturn flowPane.getChildren();\r\n\t}\r\n\tpublic  ObservableList<Node> getPaneChildren() {\r\n\t\treturn Pane.getChildren();\r\n\t}\r\n\tpublic Text getText() {\r\n\t\treturn text;\r\n\t}\r\n\tpublic Text getTextTwo() {\r\n\t\treturn textTwo;\r\n\t}\r\n\r\n\tpublic ArrayList<PictureNode> getPictures() {\r\n\t\treturn pictures;\r\n\t}\r\n\r\n\tpublic void addPictures(PictureNode pNode) {\r\n\t\tpictures.add(pNode);\r\n\t}\r\n\r\n\t/*\r\n\t * 用作刷新图片显示界面\r\n\t */\r\n\tpublic void showPicture() {\r\n\r\n\t\tflowPane.getChildren().remove(0, flowPane.getChildren().size());\r\n\t\tfor (PictureNode pNode : pictures) {\r\n\t\t\tflowPane.getChildren().add(pNode);\r\n\t\t}\r\n\t\tfiles=new ArrayList<File>();\r\n    \tfor(int i=0;i<pictures.size();i++) {\r\n    \t\tfiles.add(pictures.get(i).getImageFile());\r\n    \t}\r\n    \tChangeService.files=files;\r\n\t}\r\n\r\n\tpublic void clearPictures() {\r\n\t\tpictures.clear();\r\n\t}\r\n\r\n\tpublic void removePictures(PictureNode pNode) {\r\n\t\tfor (PictureNode pictureNode : pictures) {\r\n\t\t\tif (pictureNode.equals(pNode)) {\r\n\t\t\t\tpictures.remove(pNode);\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\r\n\t// Event Listener on Button[#openBtn].onAction\r\n\t@FXML\r\n\tpublic void openBtnAction(ActionEvent event) {\r\n\t\t//openBtn.setTooltip(new Tooltip(\"打开\"));\r\n\t\t new OpenAction();\r\n\t}\r\n\r\n\t// Event Listener on Button[#copyBtn].onAction\r\n\t@FXML\r\n\tpublic void copyBtnAction(ActionEvent event) {\r\n\t\t//copyBtn.setTooltip(new Tooltip(\"复制\"));\r\n\t\tnew CopyAction();\r\n\t}\r\n\r\n\t// Event Listener on Button[#pasteBtn].onAction\r\n\t@FXML\r\n\tpublic void pasteBtnAction(ActionEvent event) {\r\n//\t\tpasteBtn.setTooltip(new Tooltip(\"粘贴\"));\r\n\t\tnew PasteAction(mainUI);\r\n\t}\r\n\t\r\n\r\n\t// Event Listener on Button[#deleteBtn].onAction\r\n\t@FXML\r\n\tpublic void deleteBtnAction(ActionEvent event) {\r\n//\t\tdeleteBtn.setTooltip(new Tooltip(\"删除\"));\r\n\t\tnew DeleteAction(mainUI);\r\n\t}\r\n\t@FXML\r\n\tpublic void PPTAction(ActionEvent event) {\r\n//\t\tPPT.setTooltip(new Tooltip(\"幻灯片播放\"));\r\n\t\tnew PPTAction();\r\n\t}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/controller/MainUIController.java	(revision 8b929b099757be4ea1bd60f758c1d231ea4dce74)
++++ src/controller/MainUIController.java	(date 1589211564643)
+@@ -43,6 +43,8 @@
+ 	@FXML
+ 	private FlowPane flowPane;
+ 	@FXML
++	private Pane pane;
++	@FXML
+ 	private Pane Pane;
+ 	@FXML
+ 	private Text text;
+Index: src/view/MainUI.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.text.*?>\r\n<?import javafx.scene.control.*?>\r\n<?import java.lang.*?>\r\n<?import javafx.scene.layout.*?>\r\n<?import javafx.scene.layout.BorderPane?>\r\n\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"605.0\" prefWidth=\"1072.0\" xmlns=\"http://javafx.com/javafx/8\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"controller.MainUIController\">\r\n   <children>\r\n      <BorderPane prefHeight=\"604.0\" prefWidth=\"1048.0\">\r\n         <left>\r\n            <HBox id=\"hbox\" prefHeight=\"530.0\" prefWidth=\"204.0\" style=\"-fx-background-color: #3e4147;\" BorderPane.alignment=\"CENTER\">\r\n               <children>\r\n                  <TreeView id=\"treeView\" fx:id=\"treeview\" prefHeight=\"530.0\" prefWidth=\"204.0\" />\r\n               </children>\r\n            </HBox>\r\n         </left>\r\n         <top>\r\n            <ToolBar id=\"toolBar\" fx:id=\"toolBar\" prefHeight=\"52.0\" prefWidth=\"1093.0\" BorderPane.alignment=\"CENTER\">\r\n               <items>\r\n                  <Button id=\"open_btn\" fx:id=\"openBtn\" mnemonicParsing=\"false\" onAction=\"#openBtnAction\" text=\"打开\" />\r\n                  <Button id=\"copy_btn\" fx:id=\"copyBtn\" mnemonicParsing=\"false\" onAction=\"#copyBtnAction\" text=\"复制\" />\r\n                  <Button id=\"paste_btn\" fx:id=\"pasteBtn\" mnemonicParsing=\"false\" onAction=\"#pasteBtnAction\" text=\"粘贴\" />\r\n                  <Button id=\"delete_btn\" fx:id=\"deleteBtn\" mnemonicParsing=\"false\" onAction=\"#deleteBtnAction\" text=\"删除\" />\r\n                  <Button id=\"ppt_btn\" fx:id=\"PPT\" mnemonicParsing=\"false\" onAction=\"#PPTAction\" text=\"播放\" />\r\n               </items>\r\n            </ToolBar>\r\n         </top>\r\n         <center>\r\n            <ScrollPane id=\"scrollPane\" prefHeight=\"530.0\" prefWidth=\"873.0\" BorderPane.alignment=\"CENTER\">\r\n               <content>\r\n                  <FlowPane fx:id=\"flowPane\" prefHeight=\"530.0\" prefWidth=\"865.0\">\r\n                     <children>\r\n                        <Pane prefHeight=\"508.0\" prefWidth=\"842.0\" />\r\n                     </children>\r\n                  </FlowPane>\r\n               </content>\r\n            </ScrollPane>\r\n         </center>\r\n         <bottom>\r\n            <HBox id=\"bohbox\" prefHeight=\"18.0\" prefWidth=\"1069.0\" BorderPane.alignment=\"CENTER\">\r\n               <children>\r\n                  <Text id=\"text\" fx:id=\"text\" Fill=\"#ffffff\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Text\" wrappingWidth=\"243.30029296875\">\r\n                     <font>\r\n                        <Font size=\"17.0\" />\r\n                     </font>\r\n                  </Text>\r\n                  <Text fx:id=\"textTwo\" Fill=\"#ffffff\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Texttwo\" wrappingWidth=\"824.30029296875\">\r\n                     <font>\r\n                        <Font size=\"17.0\" />\r\n                     </font>\r\n                  </Text>\r\n               </children>\r\n            </HBox>\r\n         </bottom>\r\n      </BorderPane>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/view/MainUI.fxml	(revision 8b929b099757be4ea1bd60f758c1d231ea4dce74)
++++ src/view/MainUI.fxml	(date 1589211129998)
+@@ -6,14 +6,13 @@
+ <?import javafx.scene.layout.*?>
+ <?import javafx.scene.layout.BorderPane?>
+ 
+-
+ <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="1072.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainUIController">
+    <children>
+       <BorderPane prefHeight="604.0" prefWidth="1048.0">
+          <left>
+             <HBox id="hbox" prefHeight="530.0" prefWidth="204.0" style="-fx-background-color: #3e4147;" BorderPane.alignment="CENTER">
+                <children>
+-                  <TreeView id="treeView" fx:id="treeview" prefHeight="530.0" prefWidth="204.0" />
++                  <TreeView id="treeView" fx:id="treeview" prefHeight="530.0" prefWidth="227.0" />
+                </children>
+             </HBox>
+          </left>
+@@ -33,7 +32,7 @@
+                <content>
+                   <FlowPane fx:id="flowPane" prefHeight="530.0" prefWidth="865.0">
+                      <children>
+-                        <Pane prefHeight="508.0" prefWidth="842.0" />
++                        <Pane prefHeight="508.0" prefWidth="841.0" />
+                      </children>
+                   </FlowPane>
+                </content>

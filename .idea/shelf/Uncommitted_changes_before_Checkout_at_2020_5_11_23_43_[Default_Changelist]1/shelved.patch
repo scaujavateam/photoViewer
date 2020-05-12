@@ -1,0 +1,32 @@
+Index: out/production/2020scau_java/view/MainUI.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.text.*?>\r\n<?import javafx.scene.control.*?>\r\n<?import java.lang.*?>\r\n<?import javafx.scene.layout.*?>\r\n<?import javafx.scene.layout.BorderPane?>\r\n\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"605.0\" prefWidth=\"1072.0\" xmlns=\"http://javafx.com/javafx/8\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"controller.MainUIController\">\r\n   <children>\r\n      <BorderPane prefHeight=\"604.0\" prefWidth=\"1048.0\">\r\n         <left>\r\n            <HBox id=\"hbox\" prefHeight=\"530.0\" prefWidth=\"204.0\" style=\"-fx-background-color: #3e4147;\" BorderPane.alignment=\"CENTER\">\r\n               <children>\r\n                  <TreeView id=\"treeView\" fx:id=\"treeview\" prefHeight=\"530.0\" prefWidth=\"204.0\" />\r\n               </children>\r\n            </HBox>\r\n         </left>\r\n         <top>\r\n            <ToolBar id=\"toolBar\" fx:id=\"toolBar\" prefHeight=\"52.0\" prefWidth=\"1093.0\" BorderPane.alignment=\"CENTER\">\r\n               <items>\r\n                  <Button id=\"open_btn\" fx:id=\"openBtn\" mnemonicParsing=\"false\" onAction=\"#openBtnAction\" text=\"打开\" />\r\n                  <Button id=\"copy_btn\" fx:id=\"copyBtn\" mnemonicParsing=\"false\" onAction=\"#copyBtnAction\" text=\"复制\" />\r\n                  <Button id=\"paste_btn\" fx:id=\"pasteBtn\" mnemonicParsing=\"false\" onAction=\"#pasteBtnAction\" text=\"粘贴\" />\r\n                  <Button id=\"delete_btn\" fx:id=\"deleteBtn\" mnemonicParsing=\"false\" onAction=\"#deleteBtnAction\" text=\"删除\" />\r\n                  <Button id=\"ppt_btn\" fx:id=\"PPT\" mnemonicParsing=\"false\" onAction=\"#PPTAction\" text=\"播放\" />\r\n               </items>\r\n            </ToolBar>\r\n         </top>\r\n         <center>\r\n            <ScrollPane id=\"scrollPane\" prefHeight=\"530.0\" prefWidth=\"873.0\" BorderPane.alignment=\"CENTER\">\r\n               <content>\r\n                  <FlowPane fx:id=\"flowPane\" prefHeight=\"530.0\" prefWidth=\"865.0\">\r\n                     <children>\r\n                        <Pane prefHeight=\"508.0\" prefWidth=\"842.0\" />\r\n                     </children>\r\n                  </FlowPane>\r\n               </content>\r\n            </ScrollPane>\r\n         </center>\r\n         <bottom>\r\n            <HBox id=\"bohbox\" prefHeight=\"18.0\" prefWidth=\"1069.0\" BorderPane.alignment=\"CENTER\">\r\n               <children>\r\n                  <Text id=\"text\" fx:id=\"text\" Fill=\"#ffffff\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Text\" wrappingWidth=\"243.30029296875\">\r\n                     <font>\r\n                        <Font size=\"17.0\" />\r\n                     </font>\r\n                  </Text>\r\n                  <Text fx:id=\"textTwo\" Fill=\"#ffffff\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Texttwo\" wrappingWidth=\"824.30029296875\">\r\n                     <font>\r\n                        <Font size=\"17.0\" />\r\n                     </font>\r\n                  </Text>\r\n               </children>\r\n            </HBox>\r\n         </bottom>\r\n      </BorderPane>\r\n   </children>\r\n</AnchorPane>\r\n
+===================================================================
+--- out/production/2020scau_java/view/MainUI.fxml	(revision 8b929b099757be4ea1bd60f758c1d231ea4dce74)
++++ out/production/2020scau_java/view/MainUI.fxml	(date 1589211129998)
+@@ -6,14 +6,13 @@
+ <?import javafx.scene.layout.*?>
+ <?import javafx.scene.layout.BorderPane?>
+ 
+-
+ <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="1072.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainUIController">
+    <children>
+       <BorderPane prefHeight="604.0" prefWidth="1048.0">
+          <left>
+             <HBox id="hbox" prefHeight="530.0" prefWidth="204.0" style="-fx-background-color: #3e4147;" BorderPane.alignment="CENTER">
+                <children>
+-                  <TreeView id="treeView" fx:id="treeview" prefHeight="530.0" prefWidth="204.0" />
++                  <TreeView id="treeView" fx:id="treeview" prefHeight="530.0" prefWidth="227.0" />
+                </children>
+             </HBox>
+          </left>
+@@ -33,7 +32,7 @@
+                <content>
+                   <FlowPane fx:id="flowPane" prefHeight="530.0" prefWidth="865.0">
+                      <children>
+-                        <Pane prefHeight="508.0" prefWidth="842.0" />
++                        <Pane prefHeight="508.0" prefWidth="841.0" />
+                      </children>
+                   </FlowPane>
+                </content>

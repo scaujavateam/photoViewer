@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_2020_5_12_10_00_[Default_Changelist]" date="1589248827582" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_5_12_10_00_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2020/5/12 10:00 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/2020scau_java/controller/MainUIController.class" />
+    <option name="AFTER_PATH" value="out/production/2020scau_java/controller/MainUIController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_5_12_10_00_[Default_Changelist]/MainUIController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/2020scau_java/service/PaneListener.class" />
+    <option name="AFTER_PATH" value="out/production/2020scau_java/service/PaneListener.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_5_12_10_00_[Default_Changelist]/PaneListener.class" />
+  </binary>
+</changelist>

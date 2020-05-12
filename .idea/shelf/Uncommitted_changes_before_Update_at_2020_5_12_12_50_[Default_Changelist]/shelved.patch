@@ -1,0 +1,796 @@
+Index: src/view/PPT.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.text.*?>\r\n<?import javafx.scene.effect.*?>\r\n<?import javafx.geometry.*?>\r\n<?import javafx.scene.control.*?>\r\n<?import javafx.scene.image.*?>\r\n<?import java.lang.*?>\r\n<?import javafx.scene.layout.*?>\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"590.0\" prefWidth=\"946.0\" style=\"-fx-background-color: #ffffff;\" xmlns=\"http://javafx.com/javafx/8\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"controller.PPT\">\r\n   <children>\r\n      <BorderPane layoutX=\"328.0\" layoutY=\"-8.0\" onMousePressed=\"#Press\" prefHeight=\"600.0\" prefWidth=\"946.0\" AnchorPane.bottomAnchor=\"-2.0\" AnchorPane.leftAnchor=\"0.0\" AnchorPane.rightAnchor=\"0.0\" AnchorPane.topAnchor=\"-8.0\">\r\n         <center>\r\n            <ImageView fx:id=\"imageview\" fitHeight=\"483.0\" fitWidth=\"721.0\" pickOnBounds=\"true\" preserveRatio=\"true\" BorderPane.alignment=\"CENTER\" />\r\n         </center>\r\n         <bottom>\r\n            <HBox alignment=\"CENTER\" prefHeight=\"50.0\" prefWidth=\"946.0\" spacing=\"50.0\" style=\"-fx-background-color: #f3f3f3;\" BorderPane.alignment=\"BOTTOM_RIGHT\">\r\n               <children>\r\n                  <Button fx:id=\"start\" contentDisplay=\"CENTER\" mnemonicParsing=\"false\" onAction=\"#Begin\" prefHeight=\"50.0\" prefWidth=\"79.0\" style=\"-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;\" text=\"开始\" textFill=\"WHITE\">\r\n                     <graphic>\r\n                        <ImageView fitHeight=\"34.0\" fitWidth=\"61.0\" pickOnBounds=\"true\" preserveRatio=\"true\" />\r\n                     </graphic>\r\n                     <font>\r\n                        <Font size=\"21.0\" />\r\n                     </font></Button>\r\n                  <Button fx:id=\"fast\" contentDisplay=\"CENTER\" mnemonicParsing=\"false\" onAction=\"#fast\" prefHeight=\"50.0\" prefWidth=\"79.0\" style=\"-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;\" text=\"快进\" textFill=\"WHITE\">\r\n                     <font>\r\n                        <Font size=\"21.0\" />\r\n                     </font>\r\n                     <graphic>\r\n                        <ImageView fitHeight=\"34.0\" fitWidth=\"61.0\" pickOnBounds=\"true\" preserveRatio=\"true\" />\r\n                     </graphic>\r\n                  </Button>\r\n                  <Button fx:id=\"stop\" contentDisplay=\"CENTER\" mnemonicParsing=\"false\" onAction=\"#Stop\" prefHeight=\"50.0\" prefWidth=\"79.0\" style=\"-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;\" text=\"暂停\" textFill=\"WHITE\">\r\n                     <font>\r\n                        <Font size=\"21.0\" />\r\n                     </font>\r\n                     <graphic>\r\n                        <ImageView fitHeight=\"34.0\" fitWidth=\"61.0\" pickOnBounds=\"true\" preserveRatio=\"true\" />\r\n                     </graphic>\r\n                  </Button>\r\n               \r\n               </children>\r\n            </HBox>\r\n         </bottom>\r\n         <top>\r\n            <HBox prefHeight=\"40.0\" prefWidth=\"946.0\" style=\"-fx-background-color: #0078d7;\" BorderPane.alignment=\"CENTER\">\r\n               <children>\r\n                  <Button contentDisplay=\"CENTER\" mnemonicParsing=\"false\" onAction=\"#Back\" style=\"-fx-background-color: #0079d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2;\" text=\"返回\" textFill=\"WHITE\">\r\n                     <graphic>\r\n                        <ImageView fitHeight=\"19.0\" fitWidth=\"50.0\" pickOnBounds=\"true\" preserveRatio=\"true\" />\r\n                     </graphic></Button>\r\n               </children>\r\n               <padding>\r\n                  <Insets left=\"5.0\" top=\"10.0\" />\r\n               </padding>\r\n               <opaqueInsets>\r\n                  <Insets />\r\n               </opaqueInsets>\r\n            </HBox>\r\n         </top>\r\n      </BorderPane>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/view/PPT.fxml	(revision 8b929b099757be4ea1bd60f758c1d231ea4dce74)
++++ src/view/PPT.fxml	(date 1589258828998)
+@@ -24,14 +24,6 @@
+                      <font>
+                         <Font size="21.0" />
+                      </font></Button>
+-                  <Button fx:id="fast" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fast" prefHeight="50.0" prefWidth="79.0" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;" text="快进" textFill="WHITE">
+-                     <font>
+-                        <Font size="21.0" />
+-                     </font>
+-                     <graphic>
+-                        <ImageView fitHeight="34.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" />
+-                     </graphic>
+-                  </Button>
+                   <Button fx:id="stop" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Stop" prefHeight="50.0" prefWidth="79.0" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 7; -fx-border-width: 2; -fx-background-insets: 2;" text="暂停" textFill="WHITE">
+                      <font>
+                         <Font size="21.0" />
+Index: src/controller/PPT.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\n\r\nimport java.io.File;\r\nimport java.net.MalformedURLException;\r\nimport java.net.URL;\r\nimport java.nio.file.Paths;\r\nimport java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.ResourceBundle;\r\n\r\nimport action.OpenAction;\r\nimport com.sun.xml.internal.ws.runtime.config.TubelineFeatureReader;\r\nimport javafx.animation.FadeTransition;\r\nimport javafx.animation.KeyFrame;\r\nimport javafx.animation.KeyValue;\r\nimport javafx.animation.Timeline;\r\nimport javafx.beans.property.IntegerProperty;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.EventHandler;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.TreeView;\r\nimport javafx.scene.effect.Glow;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.input.MouseEvent;\r\nimport javafx.util.Duration;\r\nimport model.PictureNode;\r\nimport service.ChangeService;\r\n\r\npublic class PPT implements Initializable {\r\n\tprivate Timeline timeline;\r\n\r\n//\tprivate ArrayList<File> images;\r\n//\tprivate ArrayList<Image> list;\r\n\tprivate int count = 0;\r\n\r\n\r\n\r\n\t@FXML\r\n\tprivate ImageView imageview;\r\n\t@FXML\r\n\tprivate Button start, stop,fast;\r\n\r\n\t@FXML\r\n\tprivate void Begin(ActionEvent e) {\r\n\t\ttimeline.play();\r\n\t}\r\n\r\n\t@FXML\r\n\tprivate void Stop(ActionEvent e) {\r\n\t\ttimeline.pause();\r\n\t}\r\n\t@FXML\r\n\tprivate void fast(ActionEvent e){}\r\n\t@FXML\r\n\tprivate void Press(MouseEvent e) {\r\n\t\tif (start.isVisible()) {\r\n\t\t\tstart.setVisible(false);\r\n\t\t\tstop.setVisible(false);\r\n\t\t\tfast.setVisible(false);\r\n\t\t} else {\r\n\t\t\tstart.setVisible(true);\r\n\t\t\tstop.setVisible(true);\r\n\t\t\tfast.setVisible(true);\r\n\t\t}\r\n\t}\r\n\r\n\t@FXML\r\n\tprivate void Back(ActionEvent e) {\r\n\t\tnew OpenAction();\r\n\t}\r\n//private void init() {\r\n//\t\r\n//\timageview.setScaleX(1.5);\r\n//\timageview.setScaleY(1.5);\r\n//}\r\n\t@Override\r\n\tpublic void initialize(URL arg0, ResourceBundle arg1) {\r\n\t\t\r\n\t\timageview.setImage(ChangeService.change.getImage());\r\n\t\timageview.setEffect(ChangeService.change.getEffect());\r\n\t\timageview.setViewport(ChangeService.change.getViewport());\r\n\t\timageview.setNodeOrientation(ChangeService.change.getNodeOrientation());\r\n\t\timageview.setRotate(ChangeService.change.getRotate());\r\n//\t\tthis.images = ChangeService.files;\r\n\t\t/*\r\n\t\t * 下面这样做很傻，对同一个目录下的文件重复加载的内存， 按照以下做法，需要将一个file里的所有文件重复加载三次，\r\n\t\t * 也就是说一个文件夹内有300M的图片，需要占用900M的内存 是不是傻\r\n\t\t */\r\n\t\t// list = new ArrayList<Image>();\r\n\t\t// for (int i = 0; i < images.size(); i++) {\r\n\t\t// try {\r\n\t\t// list.add(new Image(images.get(i).toURI().toURL().toString()));\r\n\t\t// } catch (MalformedURLException e) {\r\n\t\t// e.printStackTrace();\r\n\t\t// }\r\n\t\t// }\r\n\t\ttimeline = new Timeline();\r\n\r\n\t\ttimeline.setCycleCount(Timeline.INDEFINITE);\r\n\r\n\t\tKeyValue keyValue = new KeyValue(imageview.scaleXProperty(), 2);\r\n\t\tKeyValue keyValue2 = new KeyValue(imageview.scaleYProperty(), 2);\r\n\t\tDuration duration = Duration.seconds(5);\r\n\r\n\t\tEventHandler<ActionEvent> onFinished = (ActionEvent t) -> {\r\n\t\t\tif (count < ChangeService.files.size()) {\r\n\t\t\t\ttry {\r\n\t\t\t\t\timageview.setImage(new Image(ChangeService.files.get(count).toURI().toURL().toString()));\r\n\t\t\t\t} catch (MalformedURLException e) {\r\n\t\t\t\t\te.printStackTrace();\r\n\t\t\t\t}\r\n\r\n\t\t\t} else if (count == ChangeService.files.size()) {\r\n\r\n\t\t\t\tcount = 0;\r\n\t\t\t\timageview.setScaleX(1.0);\r\n\t\t\t\timageview.setScaleY(1.0);\r\n\t\t\t\ttimeline.stop();\r\n\t\t\t}\r\n\t\t\tcount++;\r\n\t\t};\r\n\t\tKeyFrame keyFrame1 = new KeyFrame(duration, onFinished, keyValue, keyValue2);\r\n\r\n\t\ttimeline.getKeyFrames().add(keyFrame1);\r\n\r\n\r\n\t}\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/controller/PPT.java	(revision 8b929b099757be4ea1bd60f758c1d231ea4dce74)
++++ src/controller/PPT.java	(date 1589258808444)
+@@ -1,5 +1,6 @@
+ package controller;
+ 
++import java.awt.print.PrinterAbortException;
+ import java.io.File;
+ import java.net.MalformedURLException;
+ import java.net.URL;
+@@ -31,6 +32,9 @@
+ 
+ public class PPT implements Initializable {
+ 	private Timeline timeline;
++	private KeyValue keyValue,keyValue2;
++	private KeyFrame keyFrame1;
++
+ 
+ //	private ArrayList<File> images;
+ //	private ArrayList<Image> list;
+@@ -52,8 +56,7 @@
+ 	private void Stop(ActionEvent e) {
+ 		timeline.pause();
+ 	}
+-	@FXML
+-	private void fast(ActionEvent e){}
++
+ 	@FXML
+ 	private void Press(MouseEvent e) {
+ 		if (start.isVisible()) {
+@@ -84,6 +87,7 @@
+ 		imageview.setViewport(ChangeService.change.getViewport());
+ 		imageview.setNodeOrientation(ChangeService.change.getNodeOrientation());
+ 		imageview.setRotate(ChangeService.change.getRotate());
++		count=ChangeService.files.indexOf(ChangeService.file);
+ //		this.images = ChangeService.files;
+ 		/*
+ 		 * 下面这样做很傻，对同一个目录下的文件重复加载的内存， 按照以下做法，需要将一个file里的所有文件重复加载三次，
+@@ -101,13 +105,16 @@
+ 
+ 		timeline.setCycleCount(Timeline.INDEFINITE);
+ 
+-		KeyValue keyValue = new KeyValue(imageview.scaleXProperty(), 2);
+-		KeyValue keyValue2 = new KeyValue(imageview.scaleYProperty(), 2);
+-		Duration duration = Duration.seconds(5);
++		 keyValue = new KeyValue(imageview.scaleXProperty(), 2);
++		 keyValue2 = new KeyValue(imageview.scaleYProperty(), 2);
++		Duration duration = Duration.seconds(8);
++
+ 
+ 		EventHandler<ActionEvent> onFinished = (ActionEvent t) -> {
++
+ 			if (count < ChangeService.files.size()) {
+ 				try {
++					count++;
+ 					imageview.setImage(new Image(ChangeService.files.get(count).toURI().toURL().toString()));
+ 				} catch (MalformedURLException e) {
+ 					e.printStackTrace();
+@@ -120,9 +127,9 @@
+ 				imageview.setScaleY(1.0);
+ 				timeline.stop();
+ 			}
+-			count++;
++
+ 		};
+-		KeyFrame keyFrame1 = new KeyFrame(duration, onFinished, keyValue, keyValue2);
++		keyFrame1 = new KeyFrame(duration, onFinished, keyValue, keyValue2);
+ 
+ 		timeline.getKeyFrames().add(keyFrame1);
+ 
+Index: src/action/CustomAction.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/action/CustomAction.java	(date 1589249096666)
++++ src/action/CustomAction.java	(date 1589249096666)
+@@ -0,0 +1,24 @@
++package action;
++
++import javafx.fxml.FXMLLoader;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import service.ChangeService;
++
++public class CustomAction {
++    public CustomAction() {
++        try {
++            FXMLLoader loader = new FXMLLoader();
++            loader.setLocation(getClass().getResource("/View/custom.fxml"));
++            Parent root = (Parent)loader.load();
++            Scene scene = new Scene(root);
++            scene.getStylesheets().add("view/iVCSS.css");
++            ChangeService.stage.setScene(scene);
++            ChangeService.stage.setTitle("图片美化");
++            //	Main.stage.setResizable(false);
++            ChangeService.stage.show();
++        } catch(Exception e) {
++            e.printStackTrace();
++        }
++    }
++}
+Index: src/controller/More.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\n\r\nimport action.BeautyAction;\r\nimport action.ClipAction;\r\nimport action.OpenAction;\r\nimport javafx.animation.KeyFrame;\r\nimport javafx.animation.KeyValue;\r\nimport javafx.animation.Timeline;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.EventHandler;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.input.MouseEvent;\r\nimport javafx.util.Duration;\r\nimport service.ChangeService;\r\n\r\nimport java.net.MalformedURLException;\r\nimport java.net.URL;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class More implements Initializable {\r\n\r\n\r\n\r\n\t@FXML\r\n\tprivate ImageView imageview;\r\n\t@FXML\r\n\tprivate Button Clip, beautyBtn1,Custom;\r\n\tint index;\r\n\t@FXML\r\n\tprivate void clipAticon(ActionEvent e) {\r\n\t\tnew ClipAction();\r\n\t}\r\n\r\n\t@FXML\r\n\tprivate void beautyAction1(ActionEvent e) {\r\n\t\tChangeService.change = this.imageview;\r\n\t\tnew BeautyAction();\r\n\t}\r\n\t@FXML\r\n\tprivate void customAction(ActionEvent e){}\r\n\r\n\r\n\t@FXML\r\n\tprivate void Back(ActionEvent e) {\r\n\t\tnew OpenAction();\r\n\t}\r\n\r\n\t@Override\r\n\tpublic void initialize(URL arg0, ResourceBundle arg1) {\r\n\t\t\r\n\t\timageview.setImage(ChangeService.change.getImage());\r\n\t\timageview.setEffect(ChangeService.change.getEffect());\r\n\t\timageview.setViewport(ChangeService.change.getViewport());\r\n\t\timageview.setNodeOrientation(ChangeService.change.getNodeOrientation());\r\n\t\timageview.setRotate(ChangeService.change.getRotate());\r\n\r\n\t}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/controller/More.java	(revision 8b929b099757be4ea1bd60f758c1d231ea4dce74)
++++ src/controller/More.java	(date 1589249158083)
+@@ -2,6 +2,7 @@
+ 
+ import action.BeautyAction;
+ import action.ClipAction;
++import action.CustomAction;
+ import action.OpenAction;
+ import javafx.animation.KeyFrame;
+ import javafx.animation.KeyValue;
+@@ -23,8 +24,6 @@
+ 
+ public class More implements Initializable {
+ 
+-
+-
+ 	@FXML
+ 	private ImageView imageview;
+ 	@FXML
+@@ -37,11 +36,16 @@
+ 
+ 	@FXML
+ 	private void beautyAction1(ActionEvent e) {
++		System.out.println("beautyAction");
+ 		ChangeService.change = this.imageview;
+ 		new BeautyAction();
+ 	}
+ 	@FXML
+-	private void customAction(ActionEvent e){}
++	private void customAction(ActionEvent e){
++		System.out.println("customAtion");
++		ChangeService.change = this.imageview;
++		new CustomAction();
++	}
+ 
+ 
+ 	@FXML
+@@ -51,13 +55,13 @@
+ 
+ 	@Override
+ 	public void initialize(URL arg0, ResourceBundle arg1) {
+-		
+ 		imageview.setImage(ChangeService.change.getImage());
+ 		imageview.setEffect(ChangeService.change.getEffect());
+ 		imageview.setViewport(ChangeService.change.getViewport());
+ 		imageview.setNodeOrientation(ChangeService.change.getNodeOrientation());
+ 		imageview.setRotate(ChangeService.change.getRotate());
+ 
++		System.out.println("More init");
+ 	}
+ 
+ }
+Index: src/view/custom.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/view/custom.fxml	(date 1589251898532)
++++ src/view/custom.fxml	(date 1589251898532)
+@@ -0,0 +1,183 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import javafx.geometry.*?>
++<?import javafx.scene.effect.*?>
++<?import javafx.scene.text.*?>
++<?import javafx.scene.image.*?>
++<?import java.lang.*?>
++<?import java.util.*?>
++<?import javafx.scene.*?>
++<?import javafx.scene.control.*?>
++<?import javafx.scene.layout.*?>
++
++<AnchorPane prefHeight="590.0" prefWidth="946.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Custom">
++   <children>
++      <VBox prefHeight="800.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
++         <children>
++            <HBox fx:id="toppane" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #0078d7;">
++               <children>
++                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#Back" opacity="0.62" prefHeight="38.0" prefWidth="112.0" style="-fx-background-color: #0078d7; -fx-border-color: #ffffff; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;" text="返回" textFill="WHITE">
++                     <graphic>
++                        <ImageView fitHeight="19.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" />
++                     </graphic>
++                  </Button>
++               </children>
++               <padding>
++                  <Insets bottom="10.0" left="10.0" top="10.0" />
++               </padding>
++            </HBox>
++            <StackPane prefHeight="733.0" prefWidth="1000.0">
++               <children>
++                  <SplitPane dividerPositions="0.5" layoutY="69.0" style="-fx-background-color: #f2f2f2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
++                     <items>
++                        <AnchorPane fx:id="leftpane" style="-fx-background-color: #f2f2f2;">
++                           <children>
++                              <StackPane alignment="BOTTOM_RIGHT" onScroll="#Scroll" prefHeight="530.0" prefWidth="634.0" style="-fx-background-color: #f2f2f2;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
++                                 <children>
++                                    <BorderPane fx:id="borderpane" prefHeight="566.0" prefWidth="634.0" style="-fx-background-color: #f2f2f2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
++                                       <center>
++                                          <ImageView fx:id="imageview" cache="true" fitHeight="364.0" fitWidth="467.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
++                                       </center>
++                                    </BorderPane>
++                                    <VBox alignment="BOTTOM_CENTER" maxHeight="145.0" prefHeight="91.0" prefWidth="634.0">
++                                       <children>
++                                          <HBox alignment="CENTER" prefHeight="54.0" prefWidth="661.0" style="-fx-background-color: 78d7;">
++                                             <children>
++                                                <ToolBar layoutX="488.0" layoutY="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="54.0" prefWidth="205.0" style="-fx-background-color: #f2f2f2;">
++                                                   <items>
++                                                      <Button id="fangda" fx:id="big" mnemonicParsing="false" onAction="#Big" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #1E90FF; -fx-border-color: #00BFFF; -fx-background-radius: 10; -fx-border-radius: 10;" text="放大" textFill="WHITE">
++                                                         <font>
++                                                            <Font size="20.0" />
++                                                         </font>
++                                                      </Button>
++                                                      <Button id="suoxiao" fx:id="small" mnemonicParsing="false" onAction="#Small" prefHeight="38.0" prefWidth="89.0" style="-fx-background-color: #1E90FF; -fx-border-color: #00BFFF; -fx-border-radius: 10; -fx-background-radius: 10;" text="缩小" textFill="WHITE">
++                                                         <font>
++                                                            <Font size="20.0" />
++                                                         </font>
++                                                      </Button>
++                                                   </items>
++                                                </ToolBar>
++                                             </children>
++                                          </HBox>
++                                       </children>
++                                    </VBox>
++                                 </children>
++                              </StackPane>
++                              <AnchorPane fx:id="backpane" maxHeight="105.0" maxWidth="244.0" prefHeight="100.0" prefWidth="235.0" style="-fx-border-color: #ffffff; -fx-border-width: 2;" visible="false">
++                                 <children>
++                                    <TextArea fx:id="textarea" editable="false" layoutX="-1.0" layoutY="23.0" prefHeight="0.0" prefWidth="246.0" style="-fx-text-fill: #42ff51; -fx-background-color: #0078d7;" text="&#10;" />
++                                    <Pane layoutX="3.0" prefHeight="100.0" prefWidth="246.0" style="-fx-background-color: #0078d7; -fx-background-radius: 5;">
++                                       <children>
++                                          <Text fill="WHITE" layoutX="13.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="离开不保存吗？你将丢失最近的变更" wrappingWidth="219.0" />
++                                       </children>
++                                    </Pane>
++                                    <Button fx:id="sure" disable="true" layoutX="102.0" layoutY="63.0" mnemonicParsing="false" onAction="#Sure" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 10; -fx-background-radius: 10;" text="确定" textFill="WHITE" />
++                                    <Button fx:id="cancel" disable="true" layoutX="176.0" layoutY="63.0" mnemonicParsing="false" onAction="#Cancel" style="-fx-background-color: #0078d7; -fx-border-color: white; -fx-border-radius: 10; -fx-background-radius: 10;" text="取消" textFill="#fcfcfc" />
++                                 </children>
++                              </AnchorPane>
++                           </children>
++                        </AnchorPane>
++                        <AnchorPane fx:id="rightpane" maxWidth="-Infinity" minHeight="300.0" minWidth="300.0" prefHeight="537.0" prefWidth="300.0" style="-fx-background-color: #3c3838;">
++                           <children>
++                              <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="300.0" style="-fx-background-color: #4169E1;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
++                                 <children>
++                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="300.0" style="-fx-background-color: #000080;" text="亮度" textAlignment="CENTER" textFill="WHITE">
++                                       <font>
++                                          <Font size="18.0" />
++                                       </font>
++                                    </Label>
++                                    <Slider fx:id="brightness" max="0.6" min="-0.6" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #bbddff;" />
++                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #000080;" text="对比度" textAlignment="CENTER" textFill="WHITE">
++                                       <font>
++                                          <Font size="18.0" />
++                                       </font>
++                                    </Label>
++                                    <Slider fx:id="contrast" max="0.6" min="-0.6" prefHeight="47.0" prefWidth="300.0" style="-fx-background-color: #bbddff;" />
++                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="300.0" style="-fx-background-color: #000080;" text="色调" textAlignment="CENTER" textFill="WHITE">
++                                       <font>
++                                          <Font size="18.0" />
++                                       </font>
++                                    </Label>
++                                    <Slider fx:id="hue" max="0.6" min="-0.6" prefHeight="38.0" prefWidth="300.0" style="-fx-background-color: #bbddff;" />
++                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="300.0" style="-fx-background-color: #000080;" text="饱和度" textAlignment="CENTER" textFill="WHITE">
++                                       <font>
++                                          <Font size="18.0" />
++                                       </font>
++                                    </Label>
++                                    <Slider fx:id="saturation" max="0.6" min="-0.6" prefHeight="41.0" prefWidth="300.0" style="-fx-background-color: #bbddff;" />
++                                    <Group VBox.vgrow="SOMETIMES">
++                                       <children>
++                                          <GridPane layoutX="175.0" layoutY="324.0" maxHeight="100.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="58.0" prefWidth="300.0">
++                                             <children>
++                                                <Button contentDisplay="CENTER" maxHeight="98.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Undo" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #4169E1; -fx-border-color: #f2f2f2; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" text="重置" textFill="WHITE" GridPane.vgrow="SOMETIMES">
++                                                   <graphic>
++                                                      <ImageView fitHeight="35.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" />
++                                                   </graphic>
++                                                   <font>
++                                                      <Font size="20.0" />
++                                                   </font>
++                                                </Button>
++                                                <Button contentDisplay="CENTER" maxHeight="90.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Save" prefHeight="59.0" prefWidth="150.0" style="-fx-background-color: #4169E1; -fx-border-color: #f2f2f2; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" text="保存" textFill="WHITE" GridPane.columnIndex="1" GridPane.vgrow="SOMETIMES">
++                                                   <graphic>
++                                                      <ImageView fitHeight="37.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" />
++                                                   </graphic>
++                                                   <font>
++                                                      <Font size="20.0" />
++                                                   </font>
++                                                </Button>
++                                             </children>
++                                             <columnConstraints>
++                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++                                             </columnConstraints>
++                                             <rowConstraints>
++                                                <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
++                                             </rowConstraints>
++                                          </GridPane>
++                                       </children>
++                                    </Group>
++                                    <Button fx:id="SaveButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="169.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Copy" opacity="0.9" prefHeight="78.0" prefWidth="300.0" style="-fx-background-color: #000080; -fx-border-width: 5;" text="保存副本" textFill="WHITE">
++                                       <font>
++                                          <Font size="20.0" />
++                                       </font>
++                                       <graphic>
++                                          <ImageView fitHeight="56.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" />
++                                       </graphic>
++                                    </Button>
++                                 </children>
++                              </VBox>
++                           </children>
++                        </AnchorPane>
++                     </items>
++                  </SplitPane>
++                  <Region fx:id="veil" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.4);" visible="false" />
++                  <Group>
++                     <children>
++                        <VBox alignment="CENTER" layoutX="3.0" layoutY="13.824861526489258">
++                           <children>
++                              <ProgressIndicator fx:id="indicator" layoutX="25.0" layoutY="24.0" maxHeight="50.0" maxWidth="50.0" prefHeight="50.0" prefWidth="50.0" visible="false" />
++                              <Label fx:id="savelabel" layoutX="3.0" layoutY="70.0" text="正在保存.." textFill="WHITE" visible="false">
++                                 <font>
++                                    <Font size="24.0" />
++                                 </font>
++                              </Label>
++                           </children>
++                        </VBox>
++                     </children>
++                  </Group>
++                  <AnchorPane fx:id="Existpane" maxHeight="100.0" maxWidth="200.0" prefHeight="100.0" prefWidth="200.0" visible="false">
++                     <children>
++                        <TextArea editable="false" maxHeight="100.0" maxWidth="200.0" prefHeight="100.0" prefWidth="200.0" text="糟糕！&#10;我们无法保存该文件">
++                           <font>
++                              <Font size="20.0" />
++                           </font>
++                        </TextArea>
++                        <Button layoutX="100.0" layoutY="64.0" mnemonicParsing="false" onAction="#Close" text="关闭" />
++                     </children>
++                  </AnchorPane>
++               </children>
++            </StackPane>
++         </children>
++      </VBox>
++   </children>
++</AnchorPane>
+Index: src/controller/Custom.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/controller/Custom.java	(date 1589249140142)
++++ src/controller/Custom.java	(date 1589249140142)
+@@ -0,0 +1,406 @@
++package controller;
++
++import java.awt.Desktop;
++
++import java.awt.EventQueue;
++import java.awt.image.BufferedImage;
++import java.io.File;
++import java.io.IOException;
++import java.net.URL;
++import java.nio.file.Files;
++import java.nio.file.Path;
++import java.nio.file.Paths;
++import java.util.List;
++import java.util.ResourceBundle;
++import java.util.logging.Level;
++import java.util.logging.Logger;
++import java.util.stream.Collectors;
++
++import javax.imageio.ImageIO;
++
++import action.ClipAction;
++import action.OpenAction;
++import javafx.beans.value.ChangeListener;
++import javafx.beans.value.ObservableValue;
++import javafx.concurrent.Task;
++import javafx.embed.swing.SwingFXUtils;
++import javafx.event.ActionEvent;
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.fxml.Initializable;
++import javafx.scene.Cursor;
++import javafx.scene.Group;
++import javafx.scene.Scene;
++import javafx.scene.SnapshotParameters;
++import javafx.scene.control.*;
++import javafx.scene.effect.Blend;
++import javafx.scene.effect.Bloom;
++import javafx.scene.effect.BoxBlur;
++import javafx.scene.effect.ColorAdjust;
++import javafx.scene.effect.BlendMode;
++import javafx.scene.effect.Effect;
++import javafx.scene.effect.SepiaTone;
++import javafx.scene.image.Image;
++import javafx.scene.image.ImageView;
++import javafx.scene.image.PixelReader;
++import javafx.scene.image.PixelWriter;
++import javafx.scene.image.WritableImage;
++import javafx.scene.input.MouseEvent;
++import javafx.scene.input.ScrollEvent;
++import javafx.scene.layout.AnchorPane;
++import javafx.scene.layout.BorderPane;
++import javafx.scene.layout.HBox;
++import javafx.scene.layout.Region;
++import javafx.scene.paint.Color;
++import javafx.scene.shape.Shape;
++import javafx.stage.FileChooser;
++import javafx.stage.Stage;
++import service.ChangeService;
++
++public class Custom implements Initializable {
++    private final Desktop desktop = Desktop.getDesktop();
++    private final FileChooser fileChooser = new FileChooser();
++    // private Image image;
++    private Stage stage;
++
++    @FXML
++    private Button small;
++
++    @FXML
++    private Button cancel;
++
++    @FXML
++    private ProgressIndicator indicator;
++
++    @FXML
++    private Button big;
++
++    @FXML
++    private AnchorPane rightpane;
++
++    @FXML
++    private Button sure;
++
++    @FXML
++    private Region veil;
++
++    @FXML
++    private HBox toppane;
++
++    @FXML
++    private BorderPane borderpane;
++
++    @FXML
++    private TextArea textarea;
++
++    @FXML
++    private Button SaveButton;
++
++    @FXML
++    private Slider saturation;
++
++    @FXML
++    private Slider brightness;
++
++    @FXML
++    private AnchorPane leftpane;
++
++    @FXML
++    private ImageView imageview;
++
++    @FXML
++    private Slider contrast;
++
++    @FXML
++    private AnchorPane backpane;
++
++    @FXML
++    private Slider hue;
++
++    @FXML
++    private AnchorPane Existpane;
++
++    @FXML
++    private Label savelabel;
++
++    @FXML
++    private void Change(ActionEvent event) {
++        ChangeService.change=imageview;
++        // App.setStage(stage);
++    }
++
++    @FXML
++    private void Back(ActionEvent event) {
++        backpane.setVisible(true);
++        textarea.setStyle("-fx-background-color:  #2e2d2d;");
++        sure.setDisable(false);
++        cancel.setDisable(false);
++    }
++
++    @FXML
++    private void Sure(ActionEvent event) {
++        ChangeService.change=ChangeService.origin;
++        // App.setStage(stage);
++        new OpenAction();;
++    }
++
++    @FXML
++    private void Cancel(ActionEvent event) {
++
++        backpane.setVisible(false);
++        sure.setDisable(true);
++        cancel.setDisable(true);
++    }
++
++    public void setImageViewImage(ImageView image) {
++        image.setImage(ChangeService.change.getImage());
++        image.setEffect(ChangeService.change.getEffect());
++        image.setViewport(ChangeService.change.getViewport());
++        image.setNodeOrientation(ChangeService.change.getNodeOrientation());
++        image.setRotate(ChangeService.change.getRotate());
++    }
++
++    private ColorAdjust colorAdjust;
++
++    private void setImageViewEffect() {
++        colorAdjust=new ColorAdjust();
++        //亮度
++        brightness.valueProperty().addListener(new ChangeListener<Number>() {
++            @Override
++            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
++//                System.out.println("亮度"+newValue);
++                colorAdjust.setBrightness(newValue.doubleValue());
++            }
++        });
++        //对比度
++        contrast.valueProperty().addListener(new ChangeListener<Number>() {
++            @Override
++            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
++//                System.out.println("对比度"+newValue);
++                colorAdjust.setContrast(newValue.doubleValue());
++            }
++        });
++        //色调
++        hue.valueProperty().addListener(new ChangeListener<Number>() {
++            @Override
++            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
++//                System.out.println("色调"+newValue);
++                colorAdjust.setHue(newValue.doubleValue());
++            }
++        });
++        //饱和度
++        saturation.valueProperty().addListener(new ChangeListener<Number>() {
++            @Override
++            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
++//                System.out.println("饱和度"+newValue);
++                colorAdjust.setSaturation(newValue.doubleValue());
++            }
++        });
++
++        brightness.setCursor(Cursor.HAND);
++        contrast.setCursor(Cursor.HAND);
++        hue.setCursor(Cursor.HAND);
++        saturation.setCursor(Cursor.HAND);
++
++        imageview.setEffect(colorAdjust);
++
++
++    }
++
++    public void setImage() {
++        System.out.println(imageview);
++        imageview.setImage(ChangeService.change.getImage());
++        imageview.setEffect(ChangeService.change.getEffect());
++        imageview.setViewport(ChangeService.change.getViewport());
++        imageview.setNodeOrientation(ChangeService.change.getNodeOrientation());
++        imageview.setRotate(ChangeService.change.getRotate());
++        setImageViewEffect();
++    }
++
++    @FXML
++    private void Undo(ActionEvent e) {
++        imageview.setImage(ChangeService.change.getImage());
++    }
++
++    @FXML
++    private void Close(ActionEvent e) {
++        Existpane.setVisible(false);
++    }
++
++    public class SaveTask extends Task<Integer> {
++
++        @Override
++
++        protected Integer call() throws Exception {
++
++            for (int i = 0; i < 250; i++) {
++
++                updateProgress(i, 250);
++
++                Thread.sleep(5);
++
++            }
++
++            return 1;
++        }
++
++    }
++
++    @FXML
++    private void Copy(ActionEvent event) {
++        File file = ChangeService.file;
++
++        if (file.exists()) {
++            Task<Integer> task = new SaveTask();
++
++            veil.visibleProperty().bind(task.runningProperty());
++            savelabel.visibleProperty().bind(task.runningProperty());
++            indicator.visibleProperty().bind(task.runningProperty());
++            new Thread(task).start();
++
++            WritableImage image = imageview.snapshot(new SnapshotParameters(), null);
++            String copyfilepath = null;
++
++            String filename = file.getName();
++            String fileParentPath = file.getParent();
++
++            String name1 = filename.substring(0, filename.lastIndexOf("."));
++            System.out.println(name1);
++            int a = name1.lastIndexOf("(");
++            int b = name1.lastIndexOf(")");
++            if (a != -1 && b != -1) {
++                String index = name1.substring(name1.lastIndexOf("(") + 1, name1.lastIndexOf(")"));
++                if (index != "" && index != null) {
++                    int n = Integer.valueOf(index);
++                    n++;
++                    copyfilepath = fileParentPath + "\\" + name1 + "(" + n + ").jpg";
++                }
++
++            } else {
++                copyfilepath = fileParentPath + "\\" + name1 + "(" + 1 + ").jpg";
++            }
++            System.out.println(copyfilepath);
++            File files = new File(copyfilepath);
++            System.out.println(file.getPath());
++            try {
++                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", files);
++            } catch (IOException e) {
++                e.printStackTrace();
++            }
++
++            ChangeService.change=imageview;
++        } else {
++            Existpane.setVisible(true);
++        }
++
++    }
++
++    @FXML
++    private void Save(ActionEvent event) {
++
++        File file = ChangeService.file;
++
++        if (file.exists()) {
++            Task<Integer> task = new SaveTask();
++
++            veil.visibleProperty().bind(task.runningProperty());
++            savelabel.visibleProperty().bind(task.runningProperty());
++            indicator.visibleProperty().bind(task.runningProperty());
++            new Thread(task).start();
++            WritableImage image = imageview.snapshot(new SnapshotParameters(), null);
++
++            try {
++                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
++                ChangeService.change=imageview;
++                ChangeService.change=imageview;
++            } catch (IOException ex) {
++                System.out.println(ex.getMessage());
++            } catch (Exception e) {
++                e.printStackTrace();
++            }
++        } else {
++            Existpane.setVisible(true);
++        }
++    }
++
++    @FXML
++    private void Scroll(ScrollEvent e) {
++        if (imageview.getBoundsInParent().getWidth() >= imageview.getFitWidth() * 2.5) {
++            big.setDisable(true);
++            big.setOpacity(0.6);
++            if (e.getDeltaY() < 0) {
++                scrollcount += (int) (e.getDeltaY() / 26);
++                big.setDisable(false);
++                big.setOpacity(1.0);
++                imageview.setScaleX(1 + count * 0.1 + scrollcount * 0.1);
++                imageview.setScaleY(1 + count * 0.1 + scrollcount * 0.1);
++            }
++        } else if (imageview.getBoundsInParent().getWidth() < imageview.getFitWidth()*0.7) {
++            small.setDisable(true);
++            small.setOpacity(0.6);
++            if (e.getDeltaY() > 0) {
++                scrollcount += (int) (e.getDeltaY() / 26);
++                small.setDisable(false);
++                small.setOpacity(1.0);
++                imageview.setScaleX(1 + count * 0.1 + scrollcount * 0.1);
++                imageview.setScaleY(1 + count * 0.1 + scrollcount * 0.1);
++            }
++        } else {
++            scrollcount += (int) (e.getDeltaY() / 26);
++            imageview.setScaleX(1 + count * 0.1 + scrollcount * 0.1);
++            imageview.setScaleY(1 + count * 0.1 + scrollcount * 0.1);
++        }
++
++    }
++
++    private int count = 0;
++    private int scrollcount = 0;
++    @FXML
++    private void Big(ActionEvent e) {
++        if (imageview.getBoundsInParent().getWidth() >= imageview.getFitWidth() * 2.5) {
++            big.setDisable(true);
++            big.setOpacity(0.6);
++        } else {
++            count++;
++            small.setDisable(false);
++            small.setOpacity(1.0);
++            imageview.setScaleX(1 + count * 0.1 + scrollcount * 0.1);
++            imageview.setScaleY(1 + count * 0.1 + scrollcount * 0.1);
++        }
++
++    }
++
++    @FXML
++    private void Small(ActionEvent e) {
++        if (imageview.getBoundsInParent().getWidth() < imageview.getFitWidth() * 0.7) {
++            small.setDisable(true);
++            small.setOpacity(0.6);
++        } else {
++            count--;
++            imageview.setScaleX(1 + count * 0.1 + scrollcount * 0.1);
++            imageview.setScaleY(1 + count * 0.1 + scrollcount * 0.1);
++            big.setDisable(false);
++            big.setOpacity(1.0);
++
++        }
++    }
++
++    @Override
++    public void initialize(URL arg0, ResourceBundle arg1) {
++        this.setImage();
++        ChangeService.stage.widthProperty().addListener((a) -> {
++            imageview.setScaleX(1.0);
++            imageview.setScaleY(1.0);
++        });
++        ChangeService.stage.heightProperty().addListener((a) -> {
++            imageview.setScaleX(1.0);
++            imageview.setScaleY(1.0);
++        });
++        imageview.fitWidthProperty()
++                .bind(ChangeService.stage.widthProperty().subtract(rightpane.widthProperty()).divide(4).multiply(3));
++        imageview.fitHeightProperty()
++                .bind(ChangeService.stage.heightProperty().subtract(toppane.heightProperty()).divide(4).multiply(3));
++
++//        ChangeButton.setTooltip(new Tooltip("裁剪和旋转"));
++    }
++}
