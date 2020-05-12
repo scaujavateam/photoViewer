@@ -11,8 +11,6 @@ import service.ChangeService;
 
 public class MoreAction {
 	public MoreAction() {
-
-
 			try {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/View/more.fxml"));

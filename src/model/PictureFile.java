@@ -12,11 +12,7 @@ public class PictureFile {
 	public PictureFile(File imageFile) {
 		this.imageFile = imageFile;
 		imageName = imageFile.getName();
-//		try {
-//			imageURL = imageFile.toURI().toURL();
-//		} catch (MalformedURLException e) {
-//			e.printStackTrace();
-//		}
+
 		if(imageName.equals("")) {
 			imageName = imageFile.getPath();
 		}

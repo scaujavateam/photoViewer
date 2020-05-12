@@ -55,8 +55,14 @@
                                        <children>
                                           <ToolBar layoutX="488.0" layoutY="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="54.0" prefWidth="205.0" style="-fx-background-color: #f2f2f2;">
                                             <items>
-                                              <Button id="fangda" fx:id="big" mnemonicParsing="false" onAction="#Big" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #1E90FF; -fx-border-color: #00BFFF; -fx-background-radius: 10; -fx-border-radius: 10;" text="放大" textFill="WHITE" />
-                                                <Button id="suoxiao" fx:id="small" mnemonicParsing="false" onAction="#Small" prefHeight="38.0" prefWidth="89.0" style="-fx-background-color: #1E90FF; -fx-border-color: #00BFFF; -fx-border-radius: 10; -fx-background-radius: 10;" text="缩小" textFill="WHITE" />
+                                              <Button id="fangda" fx:id="big" mnemonicParsing="false" onAction="#Big" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #1E90FF; -fx-border-color: #00BFFF; -fx-background-radius: 10; -fx-border-radius: 10;" text="放大" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Button>
+                                                <Button id="suoxiao" fx:id="small" mnemonicParsing="false" onAction="#Small" prefHeight="38.0" prefWidth="89.0" style="-fx-background-color: #1E90FF; -fx-border-color: #00BFFF; -fx-border-radius: 10; -fx-background-radius: 10;" text="缩小" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Button>
                                             </items>
                                           </ToolBar>
                                        </children>
@@ -83,7 +89,10 @@
                      <children>
                         <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="300.0" style="-fx-background-color: #f2f2f2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #4169E1;" text="选择滤镜" textFill="WHITE" />
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #4169E1;" text="选择滤镜" textFill="WHITE">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Label>
                               <Group VBox.vgrow="SOMETIMES">
                                  <children>
                                     <ScrollPane hbarPolicy="NEVER" layoutX="175.0" layoutY="54.0" maxHeight="405.0" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="346.0" prefWidth="300.0" style="-fx-background-color: #4169E1;" vbarPolicy="NEVER">
@@ -203,11 +212,17 @@
                                              <graphic>
                                                 <ImageView fitHeight="42.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" />
                                              </graphic>
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
                                           </Button>
-                                          <Button contentDisplay="CENTER" maxHeight="82.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Save" prefHeight="82.0" prefWidth="148.0" style="-fx-background-color: #4169E1; -fx-border-color: #f2f2f2; -fx-border-width: 3; -fx-background-radius: 10; -fx-border-radius: 10;" text="保存" textFill="WHITE" GridPane.columnIndex="1" GridPane.vgrow="SOMETIMES">
+                                          <Button contentDisplay="CENTER" maxHeight="82.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Save" prefHeight="82.0" prefWidth="148.0" style="-fx-background-color: #4169E1; -fx-border-color: #f2f2f2; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" text="保存" textFill="WHITE" GridPane.columnIndex="1" GridPane.vgrow="SOMETIMES">
                                              <graphic>
                                                 <ImageView fitHeight="60.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" />
                                              </graphic>
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
                                           </Button>
                                           <Button fx:id="SaveButton" contentDisplay="CENTER" maxHeight="132.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Copy" opacity="0.9" prefHeight="24.0" prefWidth="300.0" style="-fx-background-color: #000080; -fx-border-width: 5;" text="保存副本" textFill="WHITE" GridPane.rowIndex="1">
                                              <font>

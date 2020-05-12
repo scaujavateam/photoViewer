@@ -52,8 +52,7 @@ public class PPT implements Initializable {
 	private void Stop(ActionEvent e) {
 		timeline.pause();
 	}
-	@FXML
-	private void fast(ActionEvent e){}
+
 	@FXML
 	private void Press(MouseEvent e) {
 		if (start.isVisible()) {
@@ -78,7 +77,7 @@ public class PPT implements Initializable {
 //}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		count=ChangeService.files.indexOf(ChangeService.file);
 		imageview.setImage(ChangeService.change.getImage());
 		imageview.setEffect(ChangeService.change.getEffect());
 		imageview.setViewport(ChangeService.change.getViewport());
@@ -108,6 +107,7 @@ public class PPT implements Initializable {
 		EventHandler<ActionEvent> onFinished = (ActionEvent t) -> {
 			if (count < ChangeService.files.size()) {
 				try {
+					count++;
 					imageview.setImage(new Image(ChangeService.files.get(count).toURI().toURL().toString()));
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
@@ -120,7 +120,7 @@ public class PPT implements Initializable {
 				imageview.setScaleY(1.0);
 				timeline.stop();
 			}
-			count++;
+
 		};
 		KeyFrame keyFrame1 = new KeyFrame(duration, onFinished, keyValue, keyValue2);
 

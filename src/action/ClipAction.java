@@ -59,24 +59,16 @@ public class ClipAction {
         Scene scene = new Scene(an);
         scene.setFill(Paint.valueOf("#ffffff00"));
         stage.setScene(scene);
-//        stage.setFullScreen(true);
 
-//        stage.setX(ChangeService.stage.getX()+7);
-//        stage.setY(ChangeService.stage.getY());
-//        ChangeService.change.getX();
-//        ChangeService.origin
         Bounds bo=ChangeService.change.getLayoutBounds();
         Point2D point1=ChangeService.change.localToScene(bo.getMinX(),bo.getMinY());
-        System.out.println( point1.getX()+" "+point1.getY());
-        System.out.println(ChangeService.change.getLayoutX()+" "+ChangeService.change.getLayoutY());
+
         stage.setX(ChangeService.change.getLayoutX()+164);
         stage.setY(ChangeService.change.getLayoutY()+60);
         stage.setHeight(ChangeService.change.prefHeight(-1));
         stage.setWidth(ChangeService.change.prefWidth(-1));
 
-//        stage.setHeight(ChangeService.stage.getHeight());
-//        stage.setWidth(ChangeService.stage.getWidth()-7);
-//        System.out.println("stageX"+stage.getX());
+
         stage.setFullScreenExitHint("");
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
