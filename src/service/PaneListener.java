@@ -1,76 +1,107 @@
 package service;
 
 import controller.MainUIController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import model.PictureNode;
 
 import java.awt.*;
+import java.io.IOException;
+
 
 public class PaneListener {
 	Node node;
 	MainUIController mainUIController;
 	private Rectangle selectRectangle;
-	private boolean isDragged;
-	
+	private double sx,sy;
+
 	public PaneListener(Node node,MainUIController mainUIController) {
 		this.node = node;
 		this.mainUIController = mainUIController;
-		selectRectangle = new Rectangle();
-		addListener();
+		selectRectangle = new Rectangle(0,0,100,100);
+		mainUIController.getPaneChildren().add(selectRectangle);
+		selectRectangle.setWidth(0);
+		selectRectangle.setHeight(0);
+		selectRectangle.setFill(Color.valueOf("#aabbff7f"));
+		selectRectangle.setStrokeWidth(0.2);
+		selectRectangle.setStroke(Color.BLUE);
+		selectRectangle.setVisible(false);
 
+		addListener();
 	}
 	private void addListener() {
 		//鼠标按下，初始化选择矩阵的左上角点
-		node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
-			isDragged = false;
-			double nowX = e.getX();
-			double nowY = e.getY();
-			selectRectangle.setX(nowX);
-			selectRectangle.setY(nowY);
-			selectRectangle.setHeight(0);
-			selectRectangle.setWidth(0);
-			selectRectangle.setVisible(true);
+		node.setOnMousePressed(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				sx=event.getX();
+				sy=event.getY();
+
+				selectRectangle.setX(sx);
+				selectRectangle.setY(sy);
+				System.out.println(sx+" "+sy);
+
+				selectRectangle.setVisible(true);
+			}
+		});
+		node.setOnDragDetected(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				node.startFullDrag();
+			}
+		});
+		node.setOnMouseDragOver(new EventHandler<MouseDragEvent>() {
+			@Override
+			public void handle(MouseDragEvent event) {
+				double sceneX=event.getX();
+				double sceneY=event.getY();
+
+				double width=Math.abs(sceneX-sx);
+				double height=Math.abs(sceneY-sy);
+				selectRectangle.setX(Math.min(sceneX,sx));
+				selectRectangle.setY(Math.min(sceneY,sy));
+				selectRectangle.setWidth(width);
+				selectRectangle.setHeight(height);
+			}
 
 		});
-		
-		node.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {
-			this.isDragged = true;
-			double nowX = e.getX();
-			double nowY = e.getY();
-			double baseX = selectRectangle.getX();
-			double baseY = selectRectangle.getY();
-			selectRectangle.setVisible(true);
-			selectRectangle.setWidth(Math.abs(baseX - nowX));
-			selectRectangle.setHeight(Math.abs(baseY - nowY));
-			selectRectangle.setFill(Color.BLUE);
-			selectRectangle.setStroke(Color.BLUE);
-			mainUIController.getPaneChildren().add(selectRectangle);
-
-		});
-		
 		//鼠标放开，更新选择矩阵的左上角点以及边长
-		node.addEventHandler(MouseEvent.MOUSE_RELEASED, (MouseEvent e) -> {
-			double nowX = e.getX();
-			double nowY = e.getY();
-			double baseX = selectRectangle.getX();
-			double baseY = selectRectangle.getY();
-			
-			selectRectangle.setX(Math.min(baseX, nowX));
-			selectRectangle.setY(Math.min(baseY, nowY));
-			
-			selectRectangle.setWidth(Math.abs(baseX - nowX));
-			selectRectangle.setHeight(Math.abs(baseY - nowY));
-			
-//			System.out.println(selectRectangle);
-			
-			//图片和选择矩阵的判断
-			if(this.isDragged) {				
+//		node.setOnMouseDragExited(new EventHandler<MouseDragEvent>() {
+//			@Override
+//			public void handle(MouseDragEvent event) {
+//				double ex=event.getX();
+//				double ey=event.getY();
+//
+//			}
+//		});
+
+		node.setOnMouseReleased(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				double sceneX=event.getX();
+				double sceneY=event.getY();
+
+				double width=Math.abs(sceneX-sx);
+				double height=Math.abs(sceneY-sy);
+				selectRectangle.setX(Math.min(sceneX,sx));
+				selectRectangle.setY(Math.min(sceneY,sy));
+				selectRectangle.setWidth(width);
+				selectRectangle.setHeight(height);
+
+				//图片和选择矩阵的判断
 				PictureNode.clearSelected();
 				for(Node childrenNode:  mainUIController.getFlowPaneChildren()) {
 					if(childrenNode instanceof PictureNode) {
@@ -79,8 +110,11 @@ public class PaneListener {
 					}
 //					((PictureNode)childrenNode).setSelected(false);
 				}
+
+				selectRectangle.setWidth(0);
+				selectRectangle.setHeight(0);
+				selectRectangle.setVisible(false);
 			}
-			selectRectangle.setVisible(false);
 		});
 	}
 	private boolean isRectOverlap(PictureNode  pictureNode) {
@@ -91,5 +125,4 @@ public class PaneListener {
 		return Math.abs(imageNodeCenterPointX - selectRectangleCenterPointX) <= (pictureNode.getWidth()/2.0 + selectRectangle.getWidth()/2.0) &&
 				Math.abs(imageNodeCenterPointY - selectRectangleCenterPointY) <= (pictureNode.getHeight()/2.0 + selectRectangle.getHeight()/2.0);
 	}
-
 }
