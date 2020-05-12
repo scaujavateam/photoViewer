@@ -58,11 +58,11 @@ public class PPT implements Initializable {
 		if (start.isVisible()) {
 			start.setVisible(false);
 			stop.setVisible(false);
-			fast.setVisible(false);
+
 		} else {
 			start.setVisible(true);
 			stop.setVisible(true);
-			fast.setVisible(true);
+
 		}
 	}
 
