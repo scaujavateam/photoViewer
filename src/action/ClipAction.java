@@ -77,7 +77,7 @@ public class ClipAction {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode()== KeyCode.ESCAPE){
-                stage.close();
+                    stage.close();
                 }
             }
         });
