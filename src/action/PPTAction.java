@@ -30,7 +30,7 @@ public class PPTAction {
 
 			try {
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("/View/PPT.fxml"));
+				loader.setLocation(getClass().getResource("/view/PPT.fxml"));
 				Parent root = (Parent) loader.load();
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add("view/iVCSS.css");

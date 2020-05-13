@@ -13,7 +13,7 @@ public class MoreAction {
 	public MoreAction() {
 			try {
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("/View/more.fxml"));
+				loader.setLocation(getClass().getResource("/view/more.fxml"));
 				Parent root = (Parent) loader.load();
 				Scene scene = new Scene(root);
 				ChangeService.stage.setScene(scene);

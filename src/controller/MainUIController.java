@@ -78,7 +78,7 @@ public class MainUIController implements Initializable {
 		pictures = new ArrayList<>();
 		treeview = new FileTree(mainUI, treeview).gettreeView();
 		// showPicture();
-		new PaneListener(flowPane,mainUI);
+		new PaneListener(pane,mainUI);
 		new MyContextMenu(flowPane, mainUI,false);
 		openBtn.setTooltip(new Tooltip("打开"));
 		copyBtn.setTooltip(new Tooltip("复制"));

@@ -80,6 +80,7 @@ public class PaneListener {
 		});
 
 
+
 		node.setOnMouseReleased(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {

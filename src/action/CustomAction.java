@@ -9,7 +9,7 @@ public class CustomAction {
     public CustomAction() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/View/custom.fxml"));
+            loader.setLocation(getClass().getResource("/view/custom.fxml"));
             Parent root = (Parent)loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add("view/iVCSS.css");
