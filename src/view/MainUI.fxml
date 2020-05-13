@@ -14,13 +14,6 @@
          </children>
       </HBox>
    </left>
-   <right>
-      <ScrollPane id="scrollPane" prefHeight="773.0" prefWidth="889.0" BorderPane.alignment="CENTER">
-         <content>
-            <FlowPane fx:id="flowPane" prefHeight="741.0" prefWidth="884.0" />
-         </content>
-      </ScrollPane>
-   </right>
    <top>
       <ToolBar id="toolBar" fx:id="toolBar" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
@@ -35,12 +28,12 @@
    <bottom>
       <HBox id="bohbox" prefHeight="23.0" prefWidth="1249.0" BorderPane.alignment="CENTER">
          <children>
-            <Text id="text" fx:id="text" Fill="#ffffff" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="637.30029296875">
+            <Text id="text" fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="637.30029296875">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
-            <Text fx:id="textTwo" Fill="#ffffff" strokeType="OUTSIDE" strokeWidth="0.0" text="Texttwo" wrappingWidth="603.30029296875">
+            <Text fx:id="textTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Texttwo" wrappingWidth="603.30029296875">
                <font>
                   <Font size="17.0" />
                </font>
@@ -48,4 +41,11 @@
          </children>
       </HBox>
    </bottom>
+   <center>
+      <ScrollPane id="scrollPane" disable="true" prefHeight="773.0" prefWidth="889.0" visible="false" BorderPane.alignment="CENTER">
+         <content>
+            <FlowPane fx:id="flowPane" prefHeight="741.0" prefWidth="884.0" />
+         </content>
+      </ScrollPane>
+   </center>
 </BorderPane>

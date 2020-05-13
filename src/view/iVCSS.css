@@ -120,7 +120,6 @@
 	 -fx-background-color: #08deff;
 	 
 	 -fx-effect: dropshadow(gaussian,derive(#08deff,-20%),50,0.6,0,0);
-	 
 }
 .button_open:pressed{
  	-fx-translate-y: 2px;
@@ -161,9 +160,9 @@
     -fx-background-insets: 0, 1 0 0 1;
 }
 
-.scroll-pane:disabled {
-    -fx-opacity: -fx-disabled-opacity;
-}
+/*.scroll-pane:disabled {*/
+/*    -fx-opacity: -fx-disabled-opacity;*/
+/*}*/
 
 
 

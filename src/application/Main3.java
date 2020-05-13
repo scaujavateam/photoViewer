@@ -15,14 +15,14 @@ public class Main3 extends Application {
 	//public  static Stage stage;
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws Exception {
 		ChangeService.stage = primaryStage;
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/MainUI.fxml"));
 			Parent root = (Parent)loader.load();
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add("view/iVCSS.css");
+//			scene.getStylesheets().add("view/iVCSS.css");
 			ChangeService.stage.setScene(scene);
 			ChangeService.stage.setTitle("iViewer-1.0");
 			ChangeService.stage.show();

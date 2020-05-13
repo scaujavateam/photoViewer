@@ -119,7 +119,7 @@ public class MainUIController implements Initializable {
 		for (PictureNode pNode : pictures) {
 			flowPane.getChildren().add(pNode);
 		}
-		files=new ArrayList<File>();
+		files = new ArrayList<File>();
     	for(int i=0;i<pictures.size();i++) {
     		files.add(pictures.get(i).getImageFile());
     	}
