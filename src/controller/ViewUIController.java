@@ -21,7 +21,7 @@ import javafx.scene.control.Tooltip;
 
 public class ViewUIController{
 	@FXML
-	public static ImageView imageView;
+	private ImageView imageView;
 	@FXML
 	private Button pptBtn, enlargeBtn, smallBtn, resetBtn, rotateBtn, beautyBtn, previousImageBtn, nextImageBtn;
 
@@ -95,5 +95,9 @@ public class ViewUIController{
 	@FXML
 	public void nextAction(ActionEvent event) {
 		Previous_next_Action.changePicture(imageView, true);
+	}
+
+	public ImageView getImageView() {
+		return imageView;
 	}
 }

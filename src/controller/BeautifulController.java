@@ -30,8 +30,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import service.ChangeService;
+import controller.ViewUIController;
 
 public class BeautifulController {
+	ViewUIController viewUIController;
 	private Stage stage = ChangeService.stage;
 	@FXML
 	private ImageView imageview, image1, image2, image3, image4, image5, image6, image7, image8, image9;
@@ -58,7 +60,7 @@ public class BeautifulController {
 	@FXML
 	public void initialize() {
 //		this.setImage();
-        imageview = ViewUIController.imageView;
+        imageview = viewUIController.getImageView();
 //		ChangeService.stage.widthProperty().addListener((a) -> {
 //			imageview.setScaleX(1.0);
 //			imageview.setScaleY(1.0);
