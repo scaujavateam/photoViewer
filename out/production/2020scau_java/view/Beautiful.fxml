@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.6972301814708691" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+           minWidth="-Infinity" prefHeight="673.0" prefWidth="1049.0" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/8" fx:controller="controller.BeautifulController">
+   <items>
+      <VBox prefHeight="671.0" prefWidth="771.0">
+         <children>
+            <FlowPane alignment="CENTER" prefHeight="500.0" prefWidth="726.0">
+               <children>
+                  <ImageView fitHeight="450.0" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="2.0" prefWidth="726.0">
+               <children>
+                  <Slider prefHeight="18.0" prefWidth="345.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </FlowPane>
+            <FlowPane alignment="CENTER" hgap="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="113.0" prefWidth="726.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Button" />
+               </children>
+            </FlowPane>
+         </children>
+      </VBox>
+      <VBox maxWidth="300.0" prefHeight="200.0" prefWidth="300.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="74.0" prefWidth="300.0" text="选择滤镜" />
+            <GridPane prefWidth="300.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Original" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Overlay" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sepiatone" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Bloom" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Mercury" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Exclusion" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Arctic" GridPane.rowIndex="5" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Denim" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Neo" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <FlowPane alignment="CENTER" prefHeight="106.0" prefWidth="300.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="106.0" prefWidth="150.0" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="106.0" prefWidth="150.0" text="Button" />
+               </children>
+            </FlowPane>
+            <Button mnemonicParsing="false" prefHeight="101.0" prefWidth="300.0" text="Button" />
+         </children>
+      </VBox>
+   </items>
+</SplitPane>

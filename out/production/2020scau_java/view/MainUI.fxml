@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="816.0" prefWidth="1242.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.MainUIController">
+   <top>
+      <ToolBar id="toolBar" prefHeight="30.0">
+        <items>
+            <Button id="open_btn" mnemonicParsing="false" onAction="#openBtnAction" text="打开" />
+            <Button id="copy_btn" mnemonicParsing="false" onAction="#copyBtnAction" text="复制" />
+            <Button id="paste_btn" mnemonicParsing="false" onAction="#pasteBtnAction" text="粘贴" />
+            <Button id="delete_btn" mnemonicParsing="false" onAction="#deleteBtnAction" text="删除" />
+            <Button id="ppt_btn" mnemonicParsing="false" onAction="#PPTAction" text="播放" />
+        </items>
+      </ToolBar>
+   </top>
+   <bottom>
+      <HBox id="bohbox" BorderPane.alignment="CENTER">
+         <children>
+            <Text id="text" fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="637.30029296875">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fx:id="textTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Texttwo" wrappingWidth="603.30029296875">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <TreeView fx:id="treeView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent" />
+   </left>
+   <center>
+       <ScrollPane fitToWidth="true" style="-fx-background-color: transparent">
+           <content>
+               <FlowPane fx:id="flowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                         style="-fx-background-color: transparent;" >
+                   <padding>
+                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                   </padding>
+               </FlowPane>
+           </content>
+       </ScrollPane>
+   </center>
+</BorderPane>
