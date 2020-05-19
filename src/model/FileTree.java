@@ -2,7 +2,6 @@ package model;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.StandardSocketOptions;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

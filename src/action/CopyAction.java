@@ -24,8 +24,6 @@ public class CopyAction {
 		}
 		clipboardContent.putFiles(PictureNode.getSelectedPictureFiles());
 		clipboard.setContent(clipboardContent);
-		clipboard = null;
-		clipboardContent = null;
 	}
 
 }

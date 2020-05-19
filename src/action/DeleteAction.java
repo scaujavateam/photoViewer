@@ -1,9 +1,10 @@
 package action;
 
-import application.Main3;
 import controller.MainUIController;
-import model.MyAlert;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import model.PictureNode;
+import java.util.Optional;
 
 public class DeleteAction {
 	MainUIController mainUIController;
@@ -20,17 +21,17 @@ public class DeleteAction {
 			}
 			PictureNode.getCutedPictures().clear();
 		}
-		
-		if(MyAlert.showAlert("是否删除选中的图片？", "", Main3.mainStage)) {
+
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("注意！");
+		alert.setHeaderText("是否确认删除选中的图片？");
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
 			for(PictureNode pNode : PictureNode.getSelectedPictures()) {
 				mainUIController.getFlowPane().getChildren().remove(pNode);
 				pNode.getImageFile().delete();
 			}
 			PictureNode.getSelectedPictureFiles().clear();
-			
-		}else {
-			PictureNode.getSelectedPictureFiles().clear();
 		}
-		PictureNode.clearSelected();
 	}
 }

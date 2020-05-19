@@ -1,93 +1,86 @@
 package controller;
 
-import java.awt.Desktop;
-
-import java.awt.EventQueue;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-
 import javax.imageio.ImageIO;
-
 import action.OpenAction;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.Bloom;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.Effect;
 import javafx.scene.effect.SepiaTone;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import service.ChangeService;
 
-public class Amazing implements Initializable {
-	private final Desktop desktop = Desktop.getDesktop();
-	private final FileChooser fileChooser = new FileChooser();
-	// private Image image;
-	private Stage stage;
+public class BeautifulController {
+	private Stage stage = ChangeService.stage;
 	@FXML
-	private ImageView imageview;
-	@FXML
-	private ImageView image1, image2, image3, image4, image5, image6, image7, image8, image9;
+	private ImageView imageview, image1, image2, image3, image4, image5, image6, image7, image8, image9;
 	@FXML
 	private Slider slider;
 	@FXML
 	private TextArea textarea;
 	@FXML
-	private Button sure;
+	private Button sure, cancel, ChangeButton, SaveButton, test, big, small;
 	@FXML
-	private Button cancel;
+	private AnchorPane backpane, Existpane, leftpane, rightpane, picturepane;
+	@FXML
+	private Label savelabel;
+	@FXML
+	private Region veil;
+	@FXML
+	private ProgressIndicator indicator;
+	@FXML
+	private HBox toppane;
+
+	private int count = 0;
+	private int scrollcount = 0;
+
+	@FXML
+	public void initialize() {
+//		this.setImage();
+        imageview = ViewUIController.imageView;
+//		ChangeService.stage.widthProperty().addListener((a) -> {
+//			imageview.setScaleX(1.0);
+//			imageview.setScaleY(1.0);
+//		});
+//		ChangeService.stage.heightProperty().addListener((a) -> {
+//			imageview.setScaleX(1.0);
+//			imageview.setScaleY(1.0);
+//		});
+//		imageview.fitWidthProperty()
+//				.bind(ChangeService.stage.widthProperty().subtract(rightpane.widthProperty()).divide(4).multiply(3));
+//		imageview.fitHeightProperty()
+//				.bind(ChangeService.stage.heightProperty().subtract(toppane.heightProperty()).divide(4).multiply(3));
+//
+//		slider.prefWidthProperty().bind(imageview.fitWidthProperty().divide(4).multiply(3));
+//		ChangeButton.setTooltip(new Tooltip("裁剪和旋转"));
+	}
 
 	@FXML
 	private void Change(ActionEvent event) {
 		ChangeService.change=imageview;
-		// App.setStage(stage);
 		new OpenAction();
-
 	}
-
-	@FXML
-	private AnchorPane backpane;
 
 	@FXML
 	private void Back(ActionEvent event) {
@@ -106,18 +99,10 @@ public class Amazing implements Initializable {
 
 	@FXML
 	private void Cancel(ActionEvent event) {
-
 		backpane.setVisible(false);
 		sure.setDisable(true);
 		cancel.setDisable(true);
 	}
-
-	@FXML
-	Button ChangeButton;
-	@FXML
-	Button SaveButton;
-	@FXML
-	private Button test;
 
 	@FXML
 	private void Sepiatone(ActionEvent e) {
@@ -146,7 +131,6 @@ public class Amazing implements Initializable {
 
 		slider.setOpacity(0.0);
 		imageview.setEffect(null);
-
 	}
 
 	@FXML
@@ -156,7 +140,6 @@ public class Amazing implements Initializable {
 		}
 		test = ((Button) e.getSource());
 		((Button) e.getSource()).setStyle("-fx-border-color:  #42ff51;-fx-background-color:  #2e2d2d;");
-
 		slider.setOpacity(0.5);
 		slider.setValue(0.5);
 		Blend blend = new Blend();
@@ -169,7 +152,6 @@ public class Amazing implements Initializable {
 
 	@FXML
 	private void Bloom(ActionEvent e) {
-
 		if (test != null) {
 			test.setStyle("-fx-border-color:  #2e2d2d;-fx-background-color:  #2e2d2d;");
 		}
@@ -341,51 +323,19 @@ public class Amazing implements Initializable {
 		image9.setEffect(color4);
 	}
 
-	public void setImage() {
-		imageview.setImage(ChangeService.change.getImage());
-		imageview.setEffect(ChangeService.change.getEffect());
-		imageview.setViewport(ChangeService.change.getViewport());
-		imageview.setNodeOrientation(ChangeService.change.getNodeOrientation());
-		imageview.setRotate(ChangeService.change.getRotate());
-		setImageViewEffect();
-		/*
-		 * this.setImageViewImage(image1); this.setImageViewImage(image2);
-		 * this.setImageViewImage(image3); this.setImageViewImage(image4);
-		 * this.setImageViewImage(image5); this.setImageViewImage(image6);
-		 * this.setImageViewImage(image7); this.setImageViewImage(image8);
-		 * this.setImageViewImage(image9); image1.setEffect(null); Blend blend = new
-		 * Blend(); blend.setMode(BlendMode.OVERLAY); blend.setOpacity(0.5);
-		 * image2.setEffect(blend); SepiaTone sep = new SepiaTone(0.5);
-		 * image3.setEffect(sep); Bloom bloom = new Bloom(0.5); image4.setEffect(bloom);
-		 * BoxBlur boxblur = new BoxBlur(); boxblur.setWidth(5.0);
-		 * boxblur.setIterations(1); ColorAdjust color1 = new ColorAdjust();
-		 * color1.setSaturation(-1.0); color1.setInput(boxblur);
-		 * boxblur.setInput(blend); image5.setEffect(color1); Blend blend2 = new
-		 * Blend(); blend2.setMode(BlendMode.EXCLUSION); blend2.setOpacity(0.5);
-		 * image6.setEffect(blend2); ColorAdjust color2 = new ColorAdjust();
-		 * color2.setHue(-0.6); color2.setInput(blend); image7.setEffect(color2);
-		 * ColorAdjust color3 = new ColorAdjust(); color3.setSaturation(-1.0);
-		 * color3.setInput(blend); image8.setEffect(color3); ColorAdjust color4 = new
-		 * ColorAdjust(); color4.setHue(0.6); color4.setInput(blend);
-		 * image9.setEffect(color4);
-		 */
-	}
+//	public void setImage() {
+//		imageview.setImage(ChangeService.change.getImage());
+//		imageview.setEffect(ChangeService.change.getEffect());
+//		imageview.setViewport(ChangeService.change.getViewport());
+//		imageview.setNodeOrientation(ChangeService.change.getNodeOrientation());
+//		imageview.setRotate(ChangeService.change.getRotate());
+//		setImageViewEffect();
+//	}
 
 	@FXML
 	private void Undo(ActionEvent e) {
 		imageview.setImage(ChangeService.change.getImage());
 	}
-
-	@FXML
-	private Region veil;
-	@FXML
-	private ProgressIndicator indicator;
-	@FXML
-	private Label savelabel;
-	@FXML
-	private AnchorPane Existpane;
-	@FXML
-	private BorderPane borderpane;
 
 	@FXML
 	private void Close(ActionEvent e) {
@@ -488,8 +438,7 @@ public class Amazing implements Initializable {
 		}
 	}
 
-	@FXML
-	private AnchorPane picturepane;
+
 
 	@FXML
 	private void Scroll(ScrollEvent e) {
@@ -520,11 +469,6 @@ public class Amazing implements Initializable {
 		}
 
 	}
-
-	private int count = 0;
-	private int scrollcount = 0;
-	@FXML
-	private Button big, small;
 
 	@FXML
 	private void Big(ActionEvent e) {
@@ -559,30 +503,5 @@ public class Amazing implements Initializable {
 
 	public void setStage(Stage stage) {
 		this.stage = stage;
-	}
-
-	@FXML
-	private AnchorPane leftpane, rightpane;
-	@FXML
-	private HBox toppane;
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.setImage();
-		ChangeService.stage.widthProperty().addListener((a) -> {
-			imageview.setScaleX(1.0);
-			imageview.setScaleY(1.0);
-		});
-		ChangeService.stage.heightProperty().addListener((a) -> {
-			imageview.setScaleX(1.0);
-			imageview.setScaleY(1.0);
-		});
-		imageview.fitWidthProperty()
-		.bind(ChangeService.stage.widthProperty().subtract(rightpane.widthProperty()).divide(4).multiply(3));
-      imageview.fitHeightProperty()
-		.bind(ChangeService.stage.heightProperty().subtract(toppane.heightProperty()).divide(4).multiply(3));
-
-      slider.prefWidthProperty().bind(imageview.fitWidthProperty().divide(4).multiply(3));
-      ChangeButton.setTooltip(new Tooltip("裁剪和旋转"));
 	}
 }

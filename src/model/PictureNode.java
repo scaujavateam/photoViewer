@@ -32,7 +32,7 @@ public class PictureNode extends Label{
 	protected static ArrayList<File> selectedPictureFiles = new  ArrayList<>();
 	protected static ArrayList<PictureNode> selectedPictures = new ArrayList<>();
 	protected static ArrayList<PictureNode> cutedPictures = new ArrayList<>();
-	
+
 	public PictureNode(PictureFile pictureFile,MainUIController mainUIController) throws MalformedURLException {	
 		this.pictureFile = pictureFile;
 		this.mainScene = mainUIController;

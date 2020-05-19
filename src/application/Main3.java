@@ -2,6 +2,7 @@ package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
@@ -15,17 +16,19 @@ public class Main3 extends Application {
 	//public  static Stage stage;
 	
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		ChangeService.stage = primaryStage;
+	public void start(Stage stage) throws Exception {
+//		ChangeService.stage = stage;
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/MainUI.fxml"));
-			Parent root = (Parent)loader.load();
+			loader.setLocation(loader.getClassLoader().getResource("view/MainUI.fxml"));
+			Pane root = (Pane) loader.load();
 			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
 //			scene.getStylesheets().add("view/iVCSS.css");
-			ChangeService.stage.setScene(scene);
-			ChangeService.stage.setTitle("iViewer-1.0");
-			ChangeService.stage.show();
+//			ChangeService.stage.setScene(scene);
+//			ChangeService.stage.setTitle("iViewer-1.0");
+//			ChangeService.stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

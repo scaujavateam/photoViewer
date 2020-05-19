@@ -1,6 +1,7 @@
 package action;
 
 import javafx.scene.image.ImageView;
+import javafx.scene.*;
 
 public class RotateAction {
 

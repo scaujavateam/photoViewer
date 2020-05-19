@@ -1,25 +1,20 @@
 package action;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Enlarge_Small_Action {
 
-	private static int changeNum = 1;
+	public static int changeNum = 1;
 
 	public static void enlarge(ImageView imageView) {
 		changeNum +=1;
-		Image image = imageView.getImage();
-		imageView.setFitWidth(800*(changeNum*0.1+1));
-		imageView.setFitHeight(800*(changeNum*0.1+1));
-		imageView.setPreserveRatio(true);
+		imageView.setFitWidth(1010*(changeNum*0.1+1));
+		imageView.setFitHeight(564*(changeNum*0.1+1));
 	}
 	public static void small(ImageView imageView) {
 		changeNum -=1;
-		Image image = imageView.getImage();
-		imageView.setFitWidth(800*(changeNum*0.1+1));
-		imageView.setFitHeight(800*(changeNum*0.1+1));
-		imageView.setPreserveRatio(true);
+		imageView.setFitWidth(1010*(changeNum*0.1+1));
+		imageView.setFitHeight(564*(changeNum*0.1+1));
 	}
-	
+
 }

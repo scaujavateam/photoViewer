@@ -43,14 +43,12 @@ public class PasteAction {
 			try {
 				newFile.createNewFile();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(newFile.exists()) {
 				try {
 					copyFile(oldFile,newFile);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -58,7 +56,6 @@ public class PasteAction {
 			try {
 				mainUI.getPictures().add(new PictureNode(new PictureFile(newFile), mainUIController));
 			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(PictureNode.getCutedPictures().size()>0) {

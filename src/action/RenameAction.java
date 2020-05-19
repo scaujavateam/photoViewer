@@ -130,7 +130,6 @@ public class RenameAction {
 			aNode.setSelected(true);
 		    mainUIController.addPictures(aNode);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -165,7 +164,6 @@ public class RenameAction {
 				newImage = new PictureNode(new PictureFile(tmp), mainUIController);
 				newList.add(newImage);
 			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
