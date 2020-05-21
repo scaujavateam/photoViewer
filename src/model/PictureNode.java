@@ -113,7 +113,7 @@ public class PictureNode extends Label{
 			selectedPictures.add(this);
 		else if (istrue && !selected.get())
 			selectedPictures.remove(this);
-		System.out.println(selectedPictures.size());
+
 		mainScene.getTextTwo().setText("已选中 "+selectedPictures.size()+" 张图片");
 	}
 	
@@ -121,6 +121,7 @@ public class PictureNode extends Label{
 		for (PictureNode pNode : selectedPictures) {
 			pNode.selected.set(false);
 		}
+
 		selectedPictures.removeAll(selectedPictures);
 	}
 	

@@ -14,7 +14,7 @@ import javafx.scene.input.DataFormat;
 import model.PictureFile;
 import model.PictureNode;
 
-public class PasteAction {
+public class PasteAction extends MainUIController {
 	MainUIController mainUIController;
 	public PasteAction(MainUIController mainUI) {
 		this.mainUIController = mainUI;

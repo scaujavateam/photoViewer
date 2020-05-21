@@ -27,11 +27,13 @@ public class PaneListener {
 	MainUIController mainUIController;
 	private Rectangle selectRectangle;
 	private double sx,sy;
+	private boolean isDragged;
 
 	public PaneListener(Node node,MainUIController mainUIController) {
 		this.node = node;
 		this.mainUIController = mainUIController;
 		selectRectangle = new Rectangle(0,0,100,100);
+		System.out.println("new");
 		mainUIController.getPaneChildren().add(selectRectangle);
 		selectRectangle.setWidth(0);
 		selectRectangle.setHeight(0);
@@ -44,15 +46,16 @@ public class PaneListener {
 	}
 	private void addListener() {
 		//鼠标按下，初始化选择矩阵的左上角点
+
 		node.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 				sx=event.getX();
 				sy=event.getY();
-
+				isDragged=false;
 				selectRectangle.setX(sx);
 				selectRectangle.setY(sy);
-				System.out.println(sx+" "+sy);
+
 
 				selectRectangle.setVisible(true);
 			}
@@ -61,6 +64,7 @@ public class PaneListener {
 			@Override
 			public void handle(MouseEvent event) {
 				node.startFullDrag();
+				isDragged = true;
 			}
 		});
 		node.setOnMouseDragOver(new EventHandler<MouseDragEvent>() {
@@ -88,13 +92,13 @@ public class PaneListener {
 				double sceneY=event.getY();
 
 				double width=Math.abs(sceneX-sx);
-				double height=Math.abs(sceneY-sy);
 				selectRectangle.setX(Math.min(sceneX,sx));
 				selectRectangle.setY(Math.min(sceneY,sy));
 				selectRectangle.setWidth(width);
+				double height=Math.abs(sceneY-sy);
 				selectRectangle.setHeight(height);
 
-				//图片和选择矩阵的判断
+				if (isDragged){
 				PictureNode.clearSelected();
 				for(Node childrenNode:  mainUIController.getFlowPaneChildren()) {
 					if(childrenNode instanceof PictureNode) {
@@ -107,6 +111,7 @@ public class PaneListener {
 				selectRectangle.setWidth(0);
 				selectRectangle.setHeight(0);
 				selectRectangle.setVisible(false);
+			}
 			}
 		});
 	}

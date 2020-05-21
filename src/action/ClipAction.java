@@ -1,6 +1,7 @@
 package action;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import controller.More;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,7 +37,7 @@ import java.io.IOException;
 
 import static java.awt.Paint.*;
 
-public class ClipAction {
+public class ClipAction extends More {
     ImageView imageView;
     Stage stage;
     HBox hBox;

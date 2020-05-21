@@ -8,9 +8,9 @@
 
 <BorderPane prefHeight="590.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainUIController">
    <left>
-      <HBox id="hbox" prefHeight="520.0" prefWidth="263.0" style="-fx-background-color: #3e4147;" BorderPane.alignment="CENTER">
+      <HBox id="hbox" prefHeight="515.0" prefWidth="266.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER">
          <children>
-            <TreeView id="treeView" fx:id="treeview" prefHeight="515.0" prefWidth="292.0" />
+            <TreeView id="treeView" fx:id="treeview" prefHeight="542.0" prefWidth="266.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
    </left>
@@ -42,14 +42,18 @@
       </HBox>
    </bottom>
    <center>
-      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="515.0" prefWidth="696.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane id="scrollPane" fx:id="scrollPane" prefHeight="515.0" prefWidth="695.0">
-               <content>
-                  <FlowPane fx:id="flowPane" prefHeight="512.0" prefWidth="689.0" />
-               </content>
-            </ScrollPane>
+            <Pane fx:id="pane" prefHeight="523.0" prefWidth="693.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
+               <children>
+                  <ScrollPane id="scrollPane" fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="514.0" prefWidth="689.0">
+                     <content>
+                        <FlowPane fx:id="flowPane" prefHeight="507.0" prefWidth="687.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
          </children>
-      </Pane>
+      </HBox>
    </center>
 </BorderPane>

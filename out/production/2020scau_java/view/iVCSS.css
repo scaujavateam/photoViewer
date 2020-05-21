@@ -135,11 +135,11 @@
     -fx-padding: 1.0;
 }
 
-.scroll-pane:focused {
-    -fx-background-color:#f0f0f0;
-    -fx-padding:2;
-    -fx-background-insets: -1.4, 0, 1;
-}
+/*.scroll-pane:focused {*/
+/*    -fx-background-color:#f0f0f0;*/
+/*    -fx-padding:2;*/
+/*    -fx-background-insets: -1.4, 0, 1;*/
+/*}*/
 
 .scroll-pane > * > .scroll-bar:horizontal {
     -fx-background-insets: 0, 1 0 0 0;
@@ -202,7 +202,7 @@
 }
 
 .context-menu > .scroll-arrow {
-    -fx-padding: 0.416667em 0.416667em 0.416667em 0.416667em; /* 5 */
+    /*-fx-padding: 0.416667em 0.416667em 0.416667em 0.416667em; !* 5 *!*/
     -fx-background-color: transparent;
 }
 
@@ -235,14 +235,14 @@
     -fx-padding: 1;
 }
 
-.tree-view:focused {/*聚焦边框*/
-    -fx-background-color:#feffff;
-    -fx-background-insets: -1.4, 0, 1;
+/*.tree-view:focused {!*聚焦边框*!*/
+/*    -fx-background-color:#feffff;*/
+/*    -fx-background-insets: -1.4, 0, 1;*/
 
-    /* There is some oddness if padding is in em values rather than pixels,
-       in particular, the left border of the control doesn't show. */
-    -fx-padding: 3; /* 0.083333em;内框宽度 */
-}
+/*    !* There is some oddness if padding is in em values rather than pixels,*/
+/*       in particular, the left border of the control doesn't show. *!*/
+/*    -fx-padding: 3; !* 0.083333em;内框宽度 *!*/
+/*}*/
 
 .tree-cell {/*主要 */
     -fx-background-color:  #f0f0f0;
@@ -258,7 +258,7 @@
 }
 
 .tree-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-cell:focused {
-    -fx-background-color:  #d9d9d9;/*选择后退出的颜色 */
+    -fx-background-color:  #cce8ff;/*选择后退出的颜色 */
     -fx-background-insets: 0, 1, 2;
 }
 

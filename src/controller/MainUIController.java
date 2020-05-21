@@ -39,6 +39,8 @@ public class MainUIController implements Initializable {
 	@FXML
 	private Pane pane;
 	@FXML
+	private ScrollPane scrollPane;
+	@FXML
 	private FlowPane flowPane;
 	@FXML
 	private Text text;
@@ -78,7 +80,12 @@ public class MainUIController implements Initializable {
 		pictures = new ArrayList<>();
 		treeview = new FileTree(mainUI, treeview).gettreeView();
 		// showPicture();
-		new PaneListener(pane,mainUI);
+		scrollPane.prefWidthProperty().bind(pane.widthProperty());
+		scrollPane.prefHeightProperty().bind(pane.heightProperty());
+		flowPane.prefWidthProperty().bind(scrollPane.widthProperty());
+		flowPane.prefHeightProperty().bind(scrollPane.heightProperty());
+
+		new PaneListener(flowPane,mainUI);
 		new MyContextMenu(flowPane, mainUI,false);
 		openBtn.setTooltip(new Tooltip("打开"));
 		copyBtn.setTooltip(new Tooltip("复制"));
@@ -120,7 +127,6 @@ public class MainUIController implements Initializable {
 	 * 用作刷新图片显示界面
 	 */
 	public void showPicture() {
-		System.out.println("233");
 		flowPane.getChildren().remove(0, flowPane.getChildren().size());
 		for (PictureNode pNode : pictures) {
 			flowPane.getChildren().add(pNode);
@@ -144,29 +150,24 @@ public class MainUIController implements Initializable {
 			}
 		}
 	}
-
 	// Event Listener on Button[#openBtn].onAction
 	@FXML
 	public void openBtnAction(ActionEvent event) {
 		//openBtn.setTooltip(new Tooltip("打开"));
 		new OpenAction();
 	}
-
 	// Event Listener on Button[#copyBtn].onAction
 	@FXML
 	public void copyBtnAction(ActionEvent event) {
 		//copyBtn.setTooltip(new Tooltip("复制"));
 		new CopyAction();
 	}
-
 	// Event Listener on Button[#pasteBtn].onAction
 	@FXML
 	public void pasteBtnAction(ActionEvent event) {
 //		pasteBtn.setTooltip(new Tooltip("粘贴"));
 		new PasteAction(mainUI);
 	}
-
-
 	// Event Listener on Button[#deleteBtn].onAction
 	@FXML
 	public void deleteBtnAction(ActionEvent event) {

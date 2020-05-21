@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import controller.MainUIController;
+import controller.ViewUIController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -15,7 +16,7 @@ import model.PictureFile;
 import model.PictureNode;
 import service.ChangeService;
 
-public class Previous_next_Action {
+public class Previous_next_Action extends ViewUIController {
 
 	private static int page = 0;
 	private static Image image;

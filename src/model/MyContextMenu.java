@@ -94,6 +94,7 @@ public class MyContextMenu {
 				PictureNode.clearSelected();// 清空已选
 
 				if (e.getButton() == MouseButton.SECONDARY) {// 鼠标右键
+
 					Clipboard clipboard = Clipboard.getSystemClipboard();
 					List<File> files = (List<File>) (clipboard.getContent(DataFormat.FILES));
 					if (files.size() <= 0) {

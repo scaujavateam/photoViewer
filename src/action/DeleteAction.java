@@ -5,7 +5,7 @@ import controller.MainUIController;
 import model.MyAlert;
 import model.PictureNode;
 
-public class DeleteAction {
+public class DeleteAction extends MainUIController {
 	MainUIController mainUIController;
 
 	public DeleteAction(MainUIController mainUI) {

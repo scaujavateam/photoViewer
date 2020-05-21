@@ -1,6 +1,7 @@
 package action;
 
 import controller.More;
+import controller.ViewUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import service.ChangeService;
 
-public class MoreAction {
+public class MoreAction extends ViewUIController {
 	public MoreAction() {
 			try {
 				FXMLLoader loader = new FXMLLoader();

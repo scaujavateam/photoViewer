@@ -1,5 +1,6 @@
 package action;
 
+import controller.MainUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import service.ChangeService;
 
-public class OpenAction {
+public class OpenAction extends MainUIController {
 	// static Stage openStage;
 	// ViewUIController viewUIController;
 	public OpenAction() {

@@ -1,5 +1,6 @@
 package action;
 
+import controller.ViewUIController;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -11,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import service.ChangeService;
 
-public class Enlarge_Small_Action {
+public class Enlarge_Small_Action extends ViewUIController {
 
 	private static int changeNum = 0;
 

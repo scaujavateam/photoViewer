@@ -1,10 +1,11 @@
 package action;
 
+import controller.MainUIController;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import model.PictureNode;
 
-public class CopyAction {
+public class CopyAction extends MainUIController {
 	
 	public CopyAction() {
 		if(PictureNode.getSelectedPictures().size()<=0) {

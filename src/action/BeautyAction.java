@@ -1,11 +1,13 @@
 package action;
 
+import controller.More;
+import controller.ViewUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import service.ChangeService;
 
-public class BeautyAction {
+public class BeautyAction extends More {
 	public BeautyAction() {
 		try {
 			FXMLLoader loader = new FXMLLoader();

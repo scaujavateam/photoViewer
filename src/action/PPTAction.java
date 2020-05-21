@@ -1,5 +1,7 @@
 package action;
 
+import controller.MainUIController;
+import controller.ViewUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import service.ChangeService;
 
-public class PPTAction {
+public class PPTAction extends ViewUIController {
 	public PPTAction() {
 
 		if (ChangeService.files == null) {

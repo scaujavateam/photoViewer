@@ -62,6 +62,7 @@ public class Custom implements Initializable {
     private final FileChooser fileChooser = new FileChooser();
     // private Image image;
     private Stage stage;
+    private  int num=1;
 
     @FXML
     private Button small;
@@ -248,9 +249,10 @@ public class Custom implements Initializable {
 
     @FXML
     private void Copy(ActionEvent event) {
-        File file = ChangeService.file;
 
-        if (file.exists()) {
+        File file1 =ChangeService.file;
+
+        if (file1.exists()) {
             Task<Integer> task = new SaveTask();
 
             veil.visibleProperty().bind(task.runningProperty());
@@ -261,27 +263,27 @@ public class Custom implements Initializable {
             WritableImage image = imageview.snapshot(new SnapshotParameters(), null);
             String copyfilepath = null;
 
-            String filename = file.getName();
-            String fileParentPath = file.getParent();
+            String filename = file1.getName();
+            String fileParentPath = file1.getParent();
 
             String name1 = filename.substring(0, filename.lastIndexOf("."));
             System.out.println(name1);
-            int a = name1.lastIndexOf("(");
-            int b = name1.lastIndexOf(")");
+            int a = name1.lastIndexOf("-");
+            int b = name1.lastIndexOf("-");
             if (a != -1 && b != -1) {
-                String index = name1.substring(name1.lastIndexOf("(") + 1, name1.lastIndexOf(")"));
+                String index = name1.substring(name1.lastIndexOf("-") + 1, name1.lastIndexOf("-"));
                 if (index != "" && index != null) {
                     int n = Integer.valueOf(index);
                     n++;
-                    copyfilepath = fileParentPath + "\\" + name1 + "(" + n + ").jpg";
+                    copyfilepath = fileParentPath + "\\" + name1 + "-" + n + "-.jpg";
                 }
 
             } else {
-                copyfilepath = fileParentPath + "\\" + name1 + "(" + 1 + ").jpg";
+                copyfilepath = fileParentPath + "\\" + name1 + "-" + 1 + "-.jpg";
             }
             System.out.println(copyfilepath);
             File files = new File(copyfilepath);
-            System.out.println(file.getPath());
+            System.out.println(file1.getPath());
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", files);
             } catch (IOException e) {
@@ -297,10 +299,12 @@ public class Custom implements Initializable {
 
     @FXML
     private void Save(ActionEvent event) {
-
-        File file = ChangeService.file;
-
-        if (file.exists()) {
+        int i=ChangeService.file.toURI().getPath().lastIndexOf(".");
+        String str=new String(ChangeService.file.toURI().getPath().substring(0, i)
+                +num+".png");
+        File file1 = new File (str);
+        num++;
+        if (file1.exists()) {
             Task<Integer> task = new SaveTask();
 
             veil.visibleProperty().bind(task.runningProperty());
@@ -310,7 +314,7 @@ public class Custom implements Initializable {
             WritableImage image = imageview.snapshot(new SnapshotParameters(), null);
 
             try {
-                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file1);
                 ChangeService.change=imageview;
                 ChangeService.change=imageview;
             } catch (IOException ex) {
